@@ -10,13 +10,15 @@ class Holescore < ActiveRecord::Base
   def assign_strokes(user, hole)
     if user.handicap <= 18
       if hole.difficulty <= user.handicap
-        holescore.strokes += 1
+        self.strokes = 1
+      else
+        self.strokes = 0
       end
     else
-      if hole.difficuly + 18 <+ user.handicap
-        holescore.strokes += 2
+      if (hole.difficuly + 18) <= user.handicap
+        self.strokes += 2
       else
-        holescore.strokes += 1
+        self.strokes += 1
       end
     end
   end

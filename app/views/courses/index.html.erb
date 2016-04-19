@@ -1,0 +1,49 @@
+<h3>
+  Courses:
+</h3>
+<ul>
+  <% @courses.each do |course| %>
+    <li>
+      <%= link_to course.name, course %>
+    </li>
+  <% end %>
+</ul>
+
+<h3>
+  Create new course:
+</h3>
+<%= form_for(@course) do |f| %>
+  <div class="row">
+    <div class="large-8 columns">
+      <%= f.label :name, "Course Name" %>
+      <%= f.text_field :name %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="large-8 columns">
+      <%= f.label :address %>
+      <%= f.text_field :address %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="large-8 columns">
+      <%= f.label :city %>
+      <%= f.text_field :city %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="large-4 columns">
+      <%= f.label :state, "State" %>
+      <%= f.select :state, options_for_select(@state_collection) %>
+    </div>
+    <div class="large-4 columns end">
+      <%= f.label :zip %>
+      <%= f.text_field :zip %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="large-4 columns end">
+      <%= f.submit "Create course", class: 'success button'%>
+    </div>
+  </div>
+<% end %>

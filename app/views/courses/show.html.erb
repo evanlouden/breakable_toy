@@ -1,0 +1,66 @@
+<h3>
+  <%= @course.name %>
+</h3>
+
+<div class="row">
+<table class="large-9 columns">
+  <tr>
+    <th>
+      Hole #
+    </th>
+    <th>
+      Par
+    </th>
+    <th>
+      Handicap
+    </th>
+    <th>
+      Stroke
+    </th>
+  </tr>
+  <% @course.holes.each do |hole| %>
+    <tr>
+      <td>
+        <%= hole.hole_number %>
+      </td>
+      <td>
+        <%= hole.par %>
+      </td>
+      <td>
+        <%= hole.difficulty %>
+      </td>
+      <td>
+        <% if hole.difficulty <= current_user.handicap %>
+        Stroke
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+</table>
+</div>
+
+<h3>
+  Add a hole:
+</h3>
+
+<div class="row">
+  <%= form_for [@course, @hole] do |f| %>
+  <div class="large-3 columns">
+    <%= f.label :hole_number %>
+    <%= f.text_field :hole_number %>
+  </div>
+  <div class="large-3 columns">
+    <%= f.label :par %>
+    <%= f.text_field :par %>
+  </div>
+  <div class="large-3 columns end">
+    <%= f.label :difficulty %>
+    <%= f.text_field :difficulty %>
+  </div>
+</div>
+<div class="row">
+  <div class="large-3 columns end">
+    <%= f.submit "Add hole", class: 'success button' %>
+  </div>
+</div>
+<% end %>
