@@ -35,7 +35,7 @@ feature "user creates a course" do
       select('Oregon', from: 'State')
       fill_in 'Zip', with: ''
       click_on 'Create Course'
-      
+
       expect(page).to have_content("Address can't be blank")
       expect(page).to have_content("City can't be blank")
       expect(page).to have_content("Zip can't be blank")
@@ -49,5 +49,4 @@ feature "user creates a course" do
 
     expect(page).to have_content('You need to sign in or sign up before continuing.')
   end
-
 end
