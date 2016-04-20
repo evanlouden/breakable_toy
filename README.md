@@ -1,6 +1,6 @@
 ![Build Status](https://codeship.com/projects/93141260-e8b8-0133-1109-0a601490f276/status?branch=master)
 ![Code Climate](https://codeclimate.com/github/evanlouden/breakable_toy.png)
-![[Coverage Status](https://coveralls.io/repos/github/evanlouden/breakable_toy/badge.svg?branch=master)](https://coveralls.io/github/evanlouden/breakable_toy?branch=master)
+[![Coverage Status](https://coveralls.io/repos/github/evanlouden/breakable_toy/badge.svg?branch=master)](https://coveralls.io/github/evanlouden/breakable_toy?branch=master)
 
 Golf is a great game but in decline. Lots of people have their opinions on why:
 
