@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
   validates :email, presence: true, uniqueness: true
   validates :username, presence: true,
     uniqueness: { case_sensitive: false }
-    validate :validate_username
+  validate :validate_username
 
   def validate_username
     if User.where(email: username).exists?
