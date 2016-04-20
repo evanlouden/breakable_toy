@@ -13,6 +13,12 @@ feature "see courses" do
     visit root_path
     click_link 'Courses'
     expect(page).to have_content(course.name)
+  end
 
+  scenario "user must login to create a course" do
+    visit root_path
+    click_link 'Create Course'
+
+    expect(page).to have_content('You need to sign in or sign up before continuing.')
   end
 end

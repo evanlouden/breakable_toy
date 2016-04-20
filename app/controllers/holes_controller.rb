@@ -1,4 +1,5 @@
 class HolesController < ApplicationController
+  before_filter :authenticate_user!
   def create
     @course = Course.find(params[:course_id])
     @hole = Hole.new(hole_params)
