@@ -22,6 +22,7 @@ group :development, :test do
   gem 'byebug'
   gem 'dotenv-rails'
   gem 'faker'
+  gem 'simplecov'
 end
 
 group :development do
