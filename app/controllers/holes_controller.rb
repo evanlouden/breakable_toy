@@ -4,11 +4,11 @@ class HolesController < ApplicationController
     @hole = Hole.new(hole_params)
     @hole.course = @course
     if @hole.save
-      redirect_to course_path(@course)
+      flash[:notice] = "Hole saved."
     else
       flash[:alert] = @hole.errors.full_messages.join(", ")
-      redirect_to course_path(@course)
     end
+    redirect_to course_path(@course)
   end
 
   private

@@ -29,10 +29,10 @@ end
     pars.shuffle!
     difficulties.shuffle!
     Hole.create!(
-    hole_number: n + 1,
-    par: pars.pop,
-    difficulty: difficulties.pop,
-    course: course
+      hole_number: n + 1,
+      par: pars.pop,
+      difficulty: difficulties.pop,
+      course: course
     )
   end
 end

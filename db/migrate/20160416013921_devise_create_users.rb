@@ -12,7 +12,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.inet     :current_sign_in_ip
       t.inet     :last_sign_in_ip
       t.integer :handicap, null: false
-      t.string :username, null: false 
+      t.string :username, null: false
       t.timestamps null: false
     end
 
