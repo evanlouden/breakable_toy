@@ -1,6 +1,14 @@
 <h3>
   <%= @course.name %>
 </h3>
+<ul>
+  <li>
+    <%= @course.address %>
+  </li>
+  <li>
+    <%= @course.city %> <%= @course.state %>, <%= @course.zip %>
+  </li>
+</ul>
 
 <div class="row">
 <table class="large-9 columns">
@@ -13,9 +21,6 @@
     </th>
     <th>
       Handicap
-    </th>
-    <th>
-      Stroke
     </th>
   </tr>
   <% @course.holes.each do |hole| %>
@@ -30,9 +35,6 @@
         <%= hole.difficulty %>
       </td>
       <td>
-        <% if hole.difficulty <= current_user.handicap %>
-        Stroke
-        <% end %>
       </td>
     </tr>
   <% end %>
