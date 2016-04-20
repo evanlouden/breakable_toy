@@ -1,4 +1,5 @@
 class CoursesController < ApplicationController
+  before_filter :authenticate_user!, except: [:index, :show]
   def create
     @course = Course.new(course_params)
     if @course.save
@@ -10,9 +11,11 @@ class CoursesController < ApplicationController
     end
   end
 
-
   def index
     @courses = Course.all
+  end
+
+  def new
     @course = Course.new
     @state_collection = Course::STATES
   end
