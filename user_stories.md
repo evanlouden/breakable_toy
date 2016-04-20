@@ -5,9 +5,9 @@ So that I can record my score while playing a match against an opponent.
 [x] There is an option to sign up if not already authenticated
 [x] The golfer must enter an email and handicap.
 [x] The golfer must enter and confirm a valid password
-[ ] If the golfer enters a handicap number less than 0 or higher than 36 they will receive an error message
-[ ] If the information is not valid the golfer will receive an error message
-[ ] If the golfer enters valid information they will receive a success message and gain access
+[x] If the golfer enters a handicap number less than 0 or higher than 36 they will receive an error message
+[x] If the information is not valid the golfer will receive an error message
+[x] If the golfer enters valid information they will receive a success message and gain access
 
 As a golfer
 I can create a match
@@ -36,7 +36,7 @@ As a golfer/user
 I can see a list of golf courses in the system
 So that I can view the hole information for that course
 
-[ ]
+[x] I can view a list of courses in the system
 [ ] I can enter the name of the course
 [ ] I can enter the city of the course
 [ ] I can enter the state of the course
@@ -46,7 +46,7 @@ As a golfer/user
 I can add a golf course
 So that I can track my gameplay on that course
 
-[ ] I can see a list of courses already entered so that I don't duplicate a course
+[x] I must log in to create a course
 [ ] I can enter the name of the course
 [ ] I can enter the city of the course
 [ ] I can enter the state of the course

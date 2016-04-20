@@ -28,7 +28,7 @@ end
   18.times do |n|
     pars.shuffle!
     difficulties.shuffle!
-    Hole.create!(
+    Hole.create(
       hole_number: n + 1,
       par: pars.pop,
       difficulty: difficulties.pop,

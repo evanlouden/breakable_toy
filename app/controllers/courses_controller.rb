@@ -3,11 +3,11 @@ class CoursesController < ApplicationController
   def create
     @course = Course.new(course_params)
     if @course.save
-      flash[:notice] = @course.name + "has been added."
+      flash[:notice] = @course.name + " has been added."
       redirect_to @course
     else
       flash[:alert] = @course.errors.full_messages.join(", ")
-      redirect_to root_path
+      redirect_to new_course_path
     end
   end
 
