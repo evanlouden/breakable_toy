@@ -9,6 +9,7 @@ gem 'jquery-rails'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'devise'
+gem 'coveralls', require: false
 
 group :development, :test do
   gem 'pry-rails'
@@ -26,8 +27,4 @@ end
 group :development do
   gem 'web-console', '~> 2.0'
   gem 'spring'
-end
-
-group :test do
-  gem 'coveralls', require: false
 end
