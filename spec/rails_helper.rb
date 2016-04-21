@@ -3,6 +3,8 @@ require File.expand_path('../../config/environment', __FILE__)
 abort("The Rails environment is running in production mode!") if Rails.env.production?
 require 'spec_helper'
 require 'rspec/rails'
+require 'capybara/rails'
+
 ActiveRecord::Migration.maintain_test_schema!
 
 RSpec.configure do |config|
@@ -14,4 +16,18 @@ end
 
 def clear_users
   User.delete_all
+end
+
+def clear_courses
+  Course.delete_all
+end
+
+def create_course
+  Course.create(
+    name: "Pacifc Dunes",
+    address: "123 Fairway Drive",
+    city: "Bandon",
+    state: "OR",
+    zip: 97411,
+  )
 end

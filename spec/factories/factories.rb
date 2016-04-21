@@ -8,13 +8,11 @@ FactoryGirl.define do
 end
 
 FactoryGirl.define do
-  course_first_name = ["Pine", "Oak", "Aspen", "Maple"]
-  course_last_name = ["Hills", "Valley", "Farms", "Ridge"]
-  factory :course do
-    name "#{course_first_name.sample} #{course_last_name.sample} Country Club"
-    address Faker::Address.street_address
-    city Faker::Address.city
-    state Faker::Address.state_abbr
-    zip Faker::Address.zip
-  end
+  Course.create(
+    name: "Pacifc Dunes",
+    address: "123 Fairway Drive",
+    city: "Bandon",
+    state: "OR",
+    zip: 97411,
+  )
 end
