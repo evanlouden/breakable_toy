@@ -6,13 +6,3 @@ FactoryGirl.define do
     handicap [1, 6, 10, 18, 25].sample
   end
 end
-
-FactoryGirl.define do
-  Course.create(
-    name: "Pacifc Dunes",
-    address: "123 Fairway Drive",
-    city: "Bandon",
-    state: "OR",
-    zip: 97411,
-  )
-end

@@ -21,13 +21,3 @@ end
 def clear_courses
   Course.delete_all
 end
-
-def create_course
-  Course.create(
-    name: "Pacifc Dunes",
-    address: "123 Fairway Drive",
-    city: "Bandon",
-    state: "OR",
-    zip: 97411,
-  )
-end

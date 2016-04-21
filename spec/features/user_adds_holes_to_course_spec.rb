@@ -9,7 +9,13 @@ feature "user adds a new hole to a course" do
     click_button 'Sign In'
 
     clear_courses
-    @course = create_course
+    @course = Course.create(
+      name: "Pacifc Dunes",
+      address: "123 Fairway Drive",
+      city: "Bandon",
+      state: "OR",
+      zip: 97411,
+    )
     visit course_path(@course)
   end
 
