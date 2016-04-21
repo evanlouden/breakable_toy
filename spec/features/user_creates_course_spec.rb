@@ -46,7 +46,7 @@ feature "user creates a course" do
   scenario "user must login to create a course" do
     visit root_path
     click_link 'Create Course'
-    save_and_open_page
+
     expect(page).to have_content('You need to sign in or sign up before continuing.')
   end
 end

@@ -1,8 +1,7 @@
 require 'rails_helper'
 
 feature "user adds a new hole to a course" do
-    before(:each) do
-
+  before(:each) do
     FactoryGirl.create(:user, username: 'Tiger')
     visit new_user_session_path
     fill_in 'Username/Email', with: 'Tiger'
