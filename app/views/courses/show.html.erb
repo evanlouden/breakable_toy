@@ -1,7 +1,7 @@
 <h3>
   <%= @course.name %>
 </h3>
-<ul>
+<ul class="no-bullet">
   <li>
     <%= @course.address %>
   </li>
@@ -10,36 +10,35 @@
   </li>
 </ul>
 
-<div class="row">
-<table class="large-9 columns">
-  <tr>
-    <th>
-      Hole #
-    </th>
-    <th>
-      Par
-    </th>
-    <th>
-      Handicap
-    </th>
-  </tr>
-  <% @course.holes.each do |hole| %>
-    <tr>
-      <td>
-        <%= hole.hole_number %>
-      </td>
-      <td>
-        <%= hole.par %>
-      </td>
-      <td>
-        <%= hole.difficulty %>
-      </td>
-      <td>
-      </td>
-    </tr>
-  <% end %>
-</table>
+<div class="small-3 columns">
+  Header-Number
 </div>
+<div class="small-3 columns">
+  Header-par
+</div>
+<div class="small-3 columns">
+  Header-difficulty
+</div>
+<div class="small-3 columns">
+  Header-strokes
+</div>
+<% @course.holes.each do |hole| %>
+<div class="holes-table">
+
+  <div class="small-3 columns holes-table">
+    <%= hole.hole_number %>
+  </div>
+  <div class="small-3 columns holes-table">
+    <%= hole.par %>
+  </div>
+  <div class="small-3 columns holes-table">
+  <%= hole.difficulty %>
+  </div>
+  <div class="small-3 columns holes-table">
+  _
+  </div>
+</div>
+<% end %>
 
 <h3>
   Add a hole:
@@ -47,22 +46,22 @@
 
 <div class="row">
   <%= form_for [@course, @hole] do |f| %>
-  <div class="large-3 columns">
-    <%= f.label :hole_number %>
+  <div class="small-3 columns">
+    <%= f.label :hole_number, 'Hole' %>
     <%= f.text_field :hole_number %>
   </div>
-  <div class="large-3 columns">
+  <div class="small-3 columns">
     <%= f.label :par %>
     <%= f.text_field :par %>
   </div>
-  <div class="large-3 columns end">
+  <div class="small-3 columns end">
     <%= f.label :difficulty %>
     <%= f.text_field :difficulty %>
   </div>
-</div>
-<div class="row">
-  <div class="large-3 columns end">
-    <%= f.submit "Add hole", class: 'success button' %>
+  <div class="row">
+    <div class="small-3 columns end">
+      <%= f.submit "Add Hole", class: 'success button'%>
+    </div>
   </div>
 </div>
 <% end %>

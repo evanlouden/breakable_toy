@@ -23,7 +23,7 @@
   <div class="row">
     <div class="large-4 columns">
       <%= f.label :state, "State" %>
-      <%= f.select :state, options_for_select(@state_collection) %>
+      <%= f.select :state, options_for_select(@state_collection, 'MA') %>
     </div>
     <div class="large-4 columns end">
       <%= f.label :zip %>
