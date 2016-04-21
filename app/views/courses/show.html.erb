@@ -11,16 +11,16 @@
 </ul>
 
 <div class="small-3 columns">
-  Header-Number
+  Hole #
 </div>
 <div class="small-3 columns">
-  Header-par
+  Par
 </div>
 <div class="small-3 columns">
-  Header-difficulty
+  Difficulty
 </div>
 <div class="small-3 columns">
-  Header-strokes
+  Strokes
 </div>
 <% @course.holes.each do |hole| %>
 <div class="holes-table">
@@ -40,10 +40,6 @@
 </div>
 <% end %>
 
-<h3>
-  Add a hole:
-</h3>
-
 <div class="row">
   <%= form_for [@course, @hole] do |f| %>
   <div class="small-3 columns">
@@ -54,14 +50,12 @@
     <%= f.label :par %>
     <%= f.text_field :par %>
   </div>
-  <div class="small-3 columns end">
+  <div class="small-3 columns">
     <%= f.label :difficulty %>
     <%= f.text_field :difficulty %>
   </div>
-  <div class="row">
-    <div class="small-3 columns end">
+  <div class="small-3 columns end">
       <%= f.submit "Add Hole", class: 'success button'%>
-    </div>
   </div>
 </div>
 <% end %>
