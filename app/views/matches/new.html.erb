@@ -3,21 +3,15 @@
 </h3>
 
 <%= form_for(@match) do |f| %>
-  <div class="row">
-    <div class="large-8 columns">
-      <%= f.label :opponent, "" %>
-      <%= f.text_field :villain %>
-    </div>
-  </div>
-  <div class="row">
     <div class="large-4 columns">
-      <%= f.label :course, "Course" %>
-      <%= f.collection_select(:course_id, Course.all, :id, :name) %>
+      <%= f.label :opponent, 'Opponent' %>
+      <%= f.select :villain_id, options_from_collection_for_select(User.all, :id, :username) %>
     </div>
-  </div>
-  <div class="row">
+    <div class="large-4 columns">
+      <%= f.label :course, 'Course' %>
+      <%= f.select :course_id, options_from_collection_for_select(Course.all, :id, :name) %>
+    </div>
     <div class="large-4 columns end">
-      <%= f.submit "Create match", class: 'success button'%>
+      <%= f.submit "Create Match", class: 'success button'%>
     </div>
-  </div>
-  <% end %>
+<% end %>

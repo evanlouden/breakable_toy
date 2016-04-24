@@ -1,5 +1,10 @@
 class HolesController < ApplicationController
   before_action :authenticate_user!
+  def show
+    @match = Match.find(params[:id])
+    @holescore = Holescore.new(match: @match)
+  end
+
   def create
     @course = Course.find(params[:course_id])
     hole_numbers = []

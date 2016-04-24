@@ -1,0 +1,87 @@
+<div class="row">
+  <div class="small-12 large-8 columns end">
+    Match status: <%= @match_status %>
+  </div>
+</div>
+<div class="row">
+  <div class="small-4 large-4 columns">
+    <%= @holescore.hole.hole_number %>
+  </div>
+  <div class="small-4 large-4 columns">
+    <%= current_user.username %>
+  </div>
+  <div class="small-4 large-4 columns end">
+    <%= @opponent_holescore.user.username %>
+  </div>
+</div>
+<div class="row">
+  <div class="small-4 large-4 columns">
+    Gross Score:
+  </div>
+  <div class="small-4 large-4 columns">
+    <% if @holescore.gross_score.nil? %>
+      -
+    <% else %>
+      <%= @holescore.gross_score %>
+    <% end %>
+  </div>
+  <div class="small-4 large-4 columns end">
+    <% if @opponent_holescore.gross_score.nil? %>
+
+    <% else %>
+      <%= @opponent_holescore.gross_score %>
+    <% end %>
+  </div>
+</div>
+<div class="row">
+  <div class="small-4 large-4 columns">
+    Strokes:
+  </div>
+  <div class="small-4 large-4 columns">
+    <% if @holescore.strokes > 0 %>
+    <%= @holescore.strokes %>
+    <% else %>
+    -
+    <% end %>
+  </div>
+  <div class="small-4 large-4 columns end">
+    <% if @opponent_holescore.strokes > 0 %>
+    <%= @opponent_holescore.strokes %>
+    <% else %>
+    -
+    <% end %>
+  </div>
+</div>
+<div class="row">
+  <div class="small-4 large-4 columns">
+    Net Score:
+  </div>
+  <div class="small-4 large-4 columns">
+    <% if @holescore.net_score.nil? %>
+    -
+    <% else %>
+    <%= @holescore.net_score %>
+    <% end %>
+  </div>
+  <div class="small-4 large-4 columns end">
+    <% if @opponent_holescore.net_score.nil? %>
+
+    <% else %>
+    <%= @opponent_holescore.net_score %>
+    <% end %>
+  </div>
+</div>
+
+<% if @holescore.gross_score.nil? %>
+  <div class="small-12 large-4 columns end">
+    <%= form_for [@match, @holescore] do |f| %>
+      <%= f.label :gross_score %>
+      <%= f.select :gross_score, options_for_select(@pars) %>
+      <%= f.submit "Enter Score", class: 'success button' %>
+    <% end %>
+  </div>
+<% end %>
+
+<div class="small-12 large-4 columns end">
+  <%= link_to "Match Home", @match %>
+</div>

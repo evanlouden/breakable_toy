@@ -1,3 +1,21 @@
-<%= @match.hero %>
-<%= @match.villain %>
-<%= @match.course %>
+<% if @match_started %>
+  <div class="row">
+    <div class="small-12 large-8 columns">
+      <%= @match.course.name %><br/>
+    </div>
+    <div class="small-12 large-8 columns end">
+      Match status: <%= @match_status %>
+    </div>
+  </div>
+  <% @holescores.each do |holescore| %>
+    <div class="small-4 columns">
+      <%= link_to "#{holescore.hole.hole_number}", match_holescore_path(@match, holescore), class: "button" %>
+    </div>
+  <% end %>
+<% else %>
+  <div class="callout">
+    <p>
+      Waiting on opponent to join...
+    </p>
+  </div>
+<% end %>

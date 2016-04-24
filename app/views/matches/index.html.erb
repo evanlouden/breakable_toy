@@ -1,0 +1,13 @@
+<h3>
+  Matches:
+</h3>
+<ul>
+  <% @matches.each do |match| %>
+    <li>
+      <%= match.hero.username %>
+      <%= match.villain.username %>
+      <%= match.course.name %>
+      <%= link_to "#{match.created_at}", match %>
+    </li>
+  <% end %>
+</ul>

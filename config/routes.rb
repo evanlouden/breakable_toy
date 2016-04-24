@@ -6,8 +6,14 @@ Rails.application.routes.draw do
   end
 
   root 'courses#index'
-  resources :courses do
-    resources :holes, only: [:create, :edit, :destroy]
+
+  resources :courses, only: [:index, :new, :create]
+  resources :courses, only: [:show] do
+    resources :holes, only: [:create]
   end
-  resources :matches
+  resources :users, only: [:show]
+  resources :matches, only: [:index, :new, :create]
+  resources :matches, only: [:show] do
+    resources :holescores, only: [:index, :show, :create, :update]
+  end
 end

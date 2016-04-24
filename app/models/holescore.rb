@@ -3,9 +3,6 @@ class Holescore < ActiveRecord::Base
   belongs_to :user
   belongs_to :match
 
-  validates :strokes, presence: true, numericality: { greater_than_or_equal_to: 1 }
-  validates :gross_score, presence: true, numericality: { greater_than_or_equal_to: 1 }
-  validates :net_score, presence: true, numericality: { greater_than_or_equal_to: -1 }
 
   def assign_strokes(user, hole)
     if user.handicap <= 18
