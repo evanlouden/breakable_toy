@@ -32,22 +32,27 @@ ActiveRecord::Schema.define(version: 20160416021302) do
   end
 
   create_table "holescores", force: :cascade do |t|
-    t.integer "strokes",     null: false
-    t.integer "gross_score", null: false
-    t.integer "net_score",   null: false
-    t.integer "user_id",     null: false
-    t.integer "hole_id",     null: false
-    t.integer "match_id",    null: false
+    t.integer "strokes",     default: 0
+    t.integer "gross_score"
+    t.integer "net_score"
+    t.integer "user_id",                 null: false
+    t.integer "hole_id",                 null: false
+    t.integer "match_id",                null: false
   end
 
   create_table "matches", force: :cascade do |t|
-    t.integer  "match_status", null: false
-    t.integer  "hero_id",      null: false
-    t.integer  "villain_id",   null: false
-    t.integer  "course_id",    null: false
+    t.integer  "match_status",         default: 0, null: false
+    t.integer  "hero_id",                          null: false
+    t.integer  "villain_id",                       null: false
+    t.integer  "hero_adj_handicap",                null: false
+    t.integer  "villain_adj_handicap",             null: false
+    t.integer  "course_id",                        null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "matches", ["hero_id"], name: "index_matches_on_hero_id", using: :btree
+  add_index "matches", ["villain_id"], name: "index_matches_on_villain_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false

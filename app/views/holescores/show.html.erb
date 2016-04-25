@@ -1,0 +1,97 @@
+<div class="row match-header">
+
+    <h3>
+      <%= @match_status %>
+    </h3>
+</div>
+<div class="row match-score-header"  >
+  <div class="small-4 large-4 columns">
+    Hole # <%= @holescore.hole.hole_number %>
+  </div>
+  <div class="small-4 large-4 columns">
+    <%= current_user.username %>
+  </div>
+  <div class="small-4 large-4 columns end">
+    <%= @opponent_holescore.user.username %>
+  </div>
+</div>
+<div class="row match-score colored">
+  <div class="small-4 large-4 columns middle">
+    Gross Score:
+  </div>
+  <div class="small-4 large-4 columns">
+    <% if @holescore.gross_score.nil? %>
+      -
+    <% else %>
+      <%= @holescore.gross_score %>
+    <% end %>
+  </div>
+  <div class="small-4 large-4 columns end">
+    <% if @opponent_holescore.gross_score.nil? %>
+
+    <% else %>
+      <%= @opponent_holescore.gross_score %>
+    <% end %>
+  </div>
+</div>
+<div class="row match-score colorless">
+  <div class="small-4 large-4 columns">
+    Strokes:
+  </div>
+  <div class="small-4 large-4 columns">
+    <% if @holescore.strokes > 0 %>
+    <%= @holescore.strokes %>
+    <% else %>
+    -
+    <% end %>
+  </div>
+  <div class="small-4 large-4 columns end">
+    <% if @opponent_holescore.strokes > 0 %>
+    <%= @opponent_holescore.strokes %>
+    <% else %>
+    -
+    <% end %>
+  </div>
+</div>
+<div class="row match-score colored">
+  <div class="small-4 large-4 columns">
+    Net Score:
+  </div>
+  <div class="small-4 large-4 columns">
+    <% if @holescore.net_score.nil? %>
+    -
+    <% else %>
+    <%= @holescore.net_score %>
+    <% end %>
+  </div>
+  <div class="small-4 large-4 columns end">
+    <% if @opponent_holescore.net_score.nil? %>
+
+    <% else %>
+    <%= @opponent_holescore.net_score %>
+    <% end %>
+  </div>
+</div>
+
+<% if @holescore.gross_score.nil? %>
+<div class="match-submit">
+  <div class="small-6 large-4 columns">
+      <%= form_for [@match, @holescore] do |f| %>
+        <%= f.select :gross_score, options_for_select(@pars) %>
+  </div>
+  <div class="small-6 large-4 columns end">
+    <%= f.submit "Enter Gross Score", class: 'success button' %>
+    <% end %>
+  </div>
+</div>
+<% end %>
+
+<div class="button-group">
+  <% unless @previous_hole.nil? %>
+    <%= link_to 'Previous Hole', match_holescore_path(@match, @previous_hole), class: 'button' %>
+  <% end %>
+  <%= link_to "Match Home", @match, class: 'button'  %>
+  <% unless @next_hole.nil? %>
+    <%= link_to 'Next Hole', match_holescore_path(@match, @next_hole), class: 'button'  %>
+  <% end# %>
+</div>

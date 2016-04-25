@@ -15,15 +15,51 @@
  *= require foundation_and_overrides
 
  */
+@import 'settings';
 
 .nav-font {
-    display: block;
-    padding: 0.7rem 1rem;
-    line-height: 1;
-    color: #2199e8;
-    text-decoration: none;
+  display: block;
+  padding: 0.7rem 1rem;
+  line-height: 1;
+  color: #2199e8;
+  text-decoration: none;
 }
 
-.holes-table:nth-of-child(even) {
-    background: #e0e0e0;
+.match-header {
+  padding-left: 60px;
+  height: 75px;
+  padding-top: 20px;
+}
+
+.match-score-header {
+  border-bottom: 1px;
+  border-bottom-style: dotted;
+}
+
+.match-footer {
+  padding-left: 60px;
+  height: 75px;
+  padding-top: 20px;
+}
+.match-submit {
+  height: 50px;
+  padding-top: 20px;
+  padding-left: 20px;
+}
+
+.winning {
+  background-color: success;
+}
+.match-score {
+  border-top: 1px solid $medium-gray;
+  height: 80px;
+  padding-top: 30px;
+
+}
+.colored {
+  background-color: $light-gray;
+}
+
+.colorless {
+  background-color: $white;
 }

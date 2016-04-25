@@ -1,0 +1,25 @@
+<%= current_user.username %>
+<h3>
+  Created Matches:
+</h3>
+<% unless @created_matches.empty? %>
+<ul>
+  <% @created_matches.each do |match| %>
+    <li>
+      <%= link_to "#{match.villain.username}      #{match.created_at.strftime("%B %d, %Y")}", match %>
+    </li>
+  <% end %>
+</ul>
+<% end %>
+<h3>
+  Invited Matches:
+</h3>
+<% unless @invited_matches.empty? %>
+<ul>
+  <% @invited_matches.each do |match| %>
+    <li>
+      <%= link_to "#{match.hero.username}     #{match.created_at.strftime("%B %d, %Y")}", match %>
+    </li>
+    <% end %>
+</ul>
+<% end %>
