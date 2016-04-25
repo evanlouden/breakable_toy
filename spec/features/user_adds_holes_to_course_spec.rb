@@ -41,7 +41,7 @@ feature "user adds a new hole to a course" do
 
   scenario "a signed in user enter a par not between 3 and 6" do
     fill_in('Hole', with: 9)
-    fill_in('Par', with: 8)
+    fill_in('Par', with: 7)
     fill_in('Difficulty', with: 4)
     click_button 'Add Hole'
 
