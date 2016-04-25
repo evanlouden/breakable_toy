@@ -42,6 +42,7 @@ class HolescoresController < ApplicationController
   end
 
   private
+
   def holescore_params
     params.require(:holescore).permit(
       :strokes,
@@ -50,5 +51,4 @@ class HolescoresController < ApplicationController
       :match_id
     ).merge(user_id: current_user.id).merge(hole_id: params[:hole_id]).merge(match_id: params[:match_id])
   end
-
 end
