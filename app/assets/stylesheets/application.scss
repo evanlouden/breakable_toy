@@ -15,6 +15,7 @@
  *= require foundation_and_overrides
 
  */
+@import 'settings';
 
 .nav-font {
   display: block;
@@ -23,35 +24,42 @@
   color: #2199e8;
   text-decoration: none;
 }
-.holes-table:nth-of-child(even) {
-  background: #e0e0e0;
+
+.match-header {
+  padding-left: 60px;
+  height: 75px;
+  padding-top: 20px;
 }
-.rTable {
-  display: table;
-  width: 100%;
+
+.match-score-header {
+  border-bottom: 1px;
+  border-bottom-style: dotted;
 }
-.rTableRow {
-  display: table-row;
+
+.match-footer {
+  padding-left: 60px;
+  height: 75px;
+  padding-top: 20px;
 }
-.rTableHeading {
-  display: table-header-group;
-  background-color: #ddd;
+.match-submit {
+  height: 50px;
+  padding-top: 20px;
+  padding-left: 20px;
 }
-.rTableCell, .rTableHead {
-  display: table-cell;
-  padding: 3px 10px;
-  border: 1px solid #999999;
+
+.winning {
+  background-color: success;
 }
-.rTableHeading {
-  display: table-header-group;
-  background-color: #ddd;
-  font-weight: bold;
+.match-score {
+  border-top: 1px solid $medium-gray;
+  height: 80px;
+  padding-top: 30px;
+
 }
-.rTableFoot {
-  display: table-footer-group;
-  font-weight: bold;
-  background-color: #ddd;
+.colored {
+  background-color: $light-gray;
 }
-.rTableBody {
-  display: table-row-group;
+
+.colorless {
+  background-color: $white;
 }

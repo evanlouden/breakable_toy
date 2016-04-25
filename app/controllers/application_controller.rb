@@ -104,9 +104,9 @@ class ApplicationController < ActionController::Base
       end
     else
       if match.match_status < 0
-        @match_status = "#{match.match_status} UP"
+        @match_status = "#{match.match_status.abs} UP"
       else
-        @match_status = "#{match.match_status.abs} DOWN"
+        @match_status = "#{match.match_status} DOWN"
       end
     end
     @match_status

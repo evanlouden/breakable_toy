@@ -21,3 +21,7 @@ end
 def clear_courses
   Course.delete_all
 end
+
+def clear_matches
+  Match.delete_all
+end 

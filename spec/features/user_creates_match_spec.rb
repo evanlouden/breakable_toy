@@ -1,7 +1,15 @@
 require 'rails_helper'
 
 feature "user creates a match" do
-  scenario "a signed in user can create a match" do
+  scenario do
+    visit new_match_path
+
+    expect(page).to have_content("You need to sign in or sign up before continuing.")
+  end
+
+  scenario "a signed in user can create a match but has to wait for oppenent to join" do
+    clear_users
+    clear_matches
     FactoryGirl.create(:user, username: 'Tiger')
     FactoryGirl.create(:user, username: 'Phil')
     visit new_user_session_path
@@ -17,19 +25,13 @@ feature "user creates a match" do
       zip: 97411,
     )
     click_link "New Match"
-
     select('Phil', from: 'match[villain_id]')
     select('Pacific Dunes', from: 'match[course_id]')
     click_button 'Create Match'
+
     expect(page).to have_content('Match created. Play well.')
+    expect(page).to have_content("Waiting on opponent to join...")
     expect(page).to have_content('Tiger')
-    expect(page).to have_content('Phil')
-    expect(page).to have_content('Pacific Dunes')
-  end
-
-  scenario do
-    visit new_match_path
-
-    expect(page).to have_content("You need to sign in or sign up before continuing.")
+    expect(page).to_not have_content('Phil')
   end
 end
