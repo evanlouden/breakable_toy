@@ -26,4 +26,6 @@ Rails.application.routes.draw do
   resources :matches, only: [:show] do
     resources :holescores, only: [:index, :show, :create, :update]
   end
+
+  resources :welcome, only: [:index]
 end

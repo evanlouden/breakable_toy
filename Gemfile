@@ -10,6 +10,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'devise'
 gem 'pg_search'
+gem 'httparty'
 
 group :development, :test do
   gem 'pry-rails'
