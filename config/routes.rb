@@ -7,6 +7,16 @@ Rails.application.routes.draw do
 
   root 'courses#index'
 
+  resources :courses do
+    collection do
+      get 'search'
+    end
+  end
+  resources :matches do
+    collection do
+      get 'ghost'
+    end
+  end
   resources :courses, only: [:index, :new, :create]
   resources :courses, only: [:show] do
     resources :holes, only: [:create]

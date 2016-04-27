@@ -9,53 +9,55 @@
     <%= @course.city %> <%= @course.state %>, <%= @course.zip %>
   </li>
 </ul>
+<div class="row">
+  <div class="small-3 columns">
+    Hole #
+  </div>
+  <div class="small-3 columns">
+    Par
+  </div>
+  <div class="small-3 columns">
+    Difficulty
+  </div>
+  <div class="small-3 columns">
 
-<div class="small-3 columns">
-  Hole #
-</div>
-<div class="small-3 columns">
-  Par
-</div>
-<div class="small-3 columns">
-  Difficulty
-</div>
-<div class="small-3 columns">
-  Strokes
+  </div>
 </div>
 <% @course.holes.each do |hole| %>
-<div class="holes-table">
+  <div class="row holes-table">
+    <div class="small-3 columns">
+      <%= hole.hole_number %>
+    </div>
+    <div class="small-3 columns">
+      <%= hole.par %>
+    </div>
+    <div class="small-3 columns">
+    <%= hole.difficulty %>
+    </div>
+    <div class="small-3 columns">
 
-  <div class="small-3 columns holes-table">
-    <%= hole.hole_number %>
+    </div>
   </div>
-  <div class="small-3 columns holes-table">
-    <%= hole.par %>
-  </div>
-  <div class="small-3 columns holes-table">
-  <%= hole.difficulty %>
-  </div>
-  <div class="small-3 columns holes-table">
-    -
-  </div>
-</div>
 <% end %>
-
-<div class="row">
-  <%= form_for [@course, @hole] do |f| %>
-  <div class="small-3 columns">
-    <%= f.label :hole_number, 'Hole' %>
-    <%= f.text_field :hole_number %>
+<% unless @course.holes.count == 18 %>
+  <div class="row">
+    <%= form_for [@course, @hole] do |f| %>
+    <div class="small-3 columns">
+      <%= f.label :hole_number, 'Hole' %>
+      <%= f.text_field :hole_number %>
+    </div>
+    <div class="small-3 columns">
+      <%= f.label :par %>
+      <%= f.text_field :par %>
+    </div>
+    <div class="small-3 columns">
+      <%= f.label :difficulty %>
+      <%= f.text_field :difficulty %>
+    </div>
+    <div class="add-hole">
+    <br/>
+      <%= f.submit "Add Hole", class: 'success button' %>
+    </div>
   </div>
-  <div class="small-3 columns">
-    <%= f.label :par %>
-    <%= f.text_field :par %>
-  </div>
-  <div class="small-3 columns">
-    <%= f.label :difficulty %>
-    <%= f.text_field :difficulty %>
-  </div>
-  <div class="small-3 columns end">
-      <%= f.submit "Add Hole", class: 'success button'%>
-  </div>
-</div>
+  <% end %>
 <% end %>

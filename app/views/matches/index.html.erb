@@ -1,13 +1,10 @@
 <h3>
   Matches:
 </h3>
-<ul>
+<div class="row small-10 columns end">
   <% @matches.each do |match| %>
-    <li>
-      <%= match.hero.username %>
-      <%= match.villain.username %>
-      <%= match.course.name %>
-      <%= link_to "#{match.created_at}", match %>
-    </li>
+    <div class="holes-table">
+      <%= link_to "#{match.hero.username} vs #{match.villain.username} on #{match.created_at.strftime("%B %d, %Y")}", match %>
+    </div>
   <% end %>
-</ul>
+</div>
