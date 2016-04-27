@@ -1,7 +1,15 @@
 class WelcomeController < ApplicationController
 
   def index
-    hourly_weather = HTTParty.get('http://api.wunderground.com/api/4df2692f4067c5b7/hourly/q/MA/Boston.json')
+    geolocation = HTTParty.get('http://ip-api.com/json')
+    @state = geolocation["region"]
+    @city = geolocation["city"]
+    key = ENV["WUNDERGROUND_KEY"]
+    hourly_weather = HTTParty.get("http://api.wunderground.com/api/#{key}/hourly/q/#{@state}/#{@city}.json")
+    astronomy = HTTParty.get("http://api.wunderground.com/api/#{key}/astronomy/q/#{@state}/#{@city}.json")
+    hour = astronomy["sun_phase"]["sunset"]["hour"]
+    minute = astronomy["sun_phase"]["sunset"]["minute"]
+    @sunset = Time.new.change(hour: hour, min: minute).strftime("%l:%M %p")
     @weather_data = []
     4.times do |n|
       @weather_data << {

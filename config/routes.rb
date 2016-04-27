@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     root to: "courses#index", as: "authenticated_root"
   end
 
-  root 'courses#index'
+  root 'welcome#index'
 
   resources :courses do
     collection do

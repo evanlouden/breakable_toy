@@ -1,13 +1,22 @@
+
+<div class="small-6 small-centered columns splash">
+  <h2>
+    <%= @city %>, <%= @state %>
+  </h2>
+</div>
+
 <% @weather_data.each do |hour| %>
-  <div class="row">
-    <div class="small-4 columns splash">
-      <%= hour[:temp] %>
-    </div>
-    <div class="small-4 columns">
-      <%= image_tag "#{hour[:icon]}", class: 'weather-icon' %>
-    </div>
-    <div class="small-4 columns splash">
-      <%= hour[:pop] %>
-    </div>
+  <div class="small-6 small-centered columns">
+    <%= "#{hour[:temp]} °   " %>
+    <%= image_tag "#{hour[:icon]}", class: 'weather-icon' %>
+    <%= "   #{hour[:pop]} %" %>
   </div>
 <% end %>
+<div class="small-6 small-centered columns splash">
+<h2>
+  <%= "Sunset  #{@sunset}" %>
+</h2>
+</div>
+<div class="small-6 small-centered columns splash">
+
+</div>

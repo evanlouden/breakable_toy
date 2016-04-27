@@ -29,10 +29,10 @@ function togglescroll() {
 
 $(document).ready(function(){
  var errorTimeOut = setTimeout(function(){
-   $('#flash-messages').fadeOut('slow',function(){
+   $('#flash-messages').fadeOut('medium',function(){
      $(this).remove();
    });
- }, 3500);
+ }, 3000);
 });
 
 $(document).ready(function() {
