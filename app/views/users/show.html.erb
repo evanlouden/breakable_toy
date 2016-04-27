@@ -3,23 +3,23 @@
   Created Matches:
 </h3>
 <% unless @created_matches.empty? %>
-<ul>
+<div class="match-header">
   <% @created_matches.each do |match| %>
-    <li>
-      <%= link_to "#{match.villain.username}      #{match.created_at.strftime("%B %d, %Y")}", match %>
-    </li>
+    <div class="row">
+      <%= link_to "#{match.villain.username} on #{match.created_at.strftime("%B %d, %Y")}", match %>
+    </div>
   <% end %>
-</ul>
+</div>
 <% end %>
 <h3>
   Invited Matches:
 </h3>
 <% unless @invited_matches.empty? %>
-<ul>
-  <% @invited_matches.each do |match| %>
-    <li>
+  <div class="match-header">
+    <% @invited_matches.each do |match| %>
+    <div class="row">
       <%= link_to "#{match.hero.username}     #{match.created_at.strftime("%B %d, %Y")}", match %>
-    </li>
+    </div>
     <% end %>
-</ul>
+  </div>
 <% end %>

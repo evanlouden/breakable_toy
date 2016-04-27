@@ -1,0 +1,13 @@
+<% @weather_data.each do |hour| %>
+  <div class="row">
+    <div class="small-4 columns splash">
+      <%= hour[:temp] %>
+    </div>
+    <div class="small-4 columns">
+      <%= image_tag "#{hour[:icon]}", class: 'weather-icon' %>
+    </div>
+    <div class="small-4 columns splash">
+      <%= hour[:pop] %>
+    </div>
+  </div>
+<% end %>

@@ -1,9 +1,7 @@
-<% if notice %>
-<div class="callout success">
-  <%= notice %>
-</div>
-<% elsif alert %>
-<div class="callout alert">
-  <%= alert %>
-</div>
+<div id="flash-messages">
+<% flash.each do |type, msg| %>
+ <div class="flash <%= type %>">
+   <%= msg %>
+ </div>
 <% end %>
+</div>

@@ -11,18 +11,29 @@
   </head>
 
   <body>
-    <%= render 'layouts/nav' %>
-    <%= render 'layouts/flash' %>
+    <div class="mobilenav">
+      <%= render 'layouts/nav' %>
+    </div>
+      <a href="javascript:void(0)" class="icon">
+        <div class="hamburger">
+          <div class="menui top-menu"></div>
+          <div class="menui mid-menu"></div>
+          <div class="menui bottom-menu"></div>
+        </div>
+      </a>
 
-    <div class="container">
-      <div class="row">
+    <div class="buffer">
+    </div>
+      <%= render 'layouts/flash' %>
+      <div class="row main">
         <div class="column">
+
 
           <%= yield %>
 
         </div>
       </div>
-    </div>
+
     <%= javascript_include_tag "application" %>
   </body>
-</html>
+  </html>

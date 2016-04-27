@@ -20,8 +20,8 @@ class ApplicationController < ActionController::Base
       match.villain_adj_handicap = 0
       match.hero_adj_handicap = match.hero.handicap - match.villain.handicap
     else
-      match.hero_adj_handicap = match.hero.handicap
-      match.villain_adj_handicap = match.villain.handicap
+      match.hero_adj_handicap = 0
+      match.villain_adj_handicap = 0
     end
   end
 
@@ -134,6 +134,18 @@ class ApplicationController < ActionController::Base
           match.match_status += 1
         end
       end
+    end
+  end
+
+  def opponent_and_adjusted_handicaps(match)
+    if match.hero == current_user
+      @opponent = match.villain
+      @opponent_adjusted_handicap = match.villain_adj_handicap
+      @adjusted_handicap = match.hero_adj_handicap
+    else
+      @opponent = match.hero
+      @opponent_adjusted_handicap = match.hero_adj_handicap
+      @adjusted_handicap = match.villain_adj_handicap
     end
   end
 end

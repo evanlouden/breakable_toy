@@ -21,4 +21,9 @@ class Course < ActiveRecord::Base
     presence: true,
     inclusion: { in: STATES.map { |state| state[1] } }
   validates :zip, presence: true
+
+  include PgSearch
+    pg_search_scope :order_search, against: [:name], using: { tsearch: { dictionary: "english" } }
+
+  scope :search, -> (query) { order_search(query) if query.present? }
 end

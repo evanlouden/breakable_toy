@@ -18,6 +18,12 @@ class MatchesController < ApplicationController
 
   def new
     @match = Match.new
+    @courses_available_for_ghost = []
+    Match.all.each do |match|
+      unless @courses_available_for_ghost.include?(match.course)
+        @courses_available_for_ghost << match.course
+      end
+    end
   end
 
   def show
@@ -31,8 +37,28 @@ class MatchesController < ApplicationController
     end
     @holescores = Holescore.where(user: current_user, match: @match).order('hole_id')
     @match_started = match_started?(@match, current_user)
+    opponent_and_adjusted_handicaps(@match)
     calculate_match_status(@match)
     user_match_status(@match)
+  end
+
+  def ghost
+    @course = Course.find(params[:course_id])
+    @ghost_match = Match.where(course: @course).sample
+    @ghost_user = User.find(1)
+    @random_user = [@ghost_match.hero, @ghost_match.villain].sample
+    @ghost_user.handicap = @random_user.handicap
+    @holescores = Holescore.where(user: @random_user, match: @ghost_match).order('hole_id')
+    @match = Match.new(hero: current_user, villain: @ghost_user , course: @course)
+    adjust_handicaps(@match)
+    @match.save
+    @holescores.each do |holescore|
+      hole = Holescore.new(user: @ghost_user, match: @match, hole_id: holescore.hole_id, gross_score: holescore.gross_score)
+      assign_strokes(hole, current_user, @match)
+      calculate_net_score(hole)
+      hole.save
+    end
+    redirect_to @match
   end
 
   private

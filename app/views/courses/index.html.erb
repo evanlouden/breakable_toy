@@ -1,12 +1,22 @@
-<h3>
-  Courses:
-</h3>
-<ul>
-  <% @courses.each do |course| %>
-    <li>
-      <%= link_to course.name, course %>
-    </li>
-  <% end %>
-</ul>
+<div class="row">
+  <%= form_tag search_courses_path, method: :get do %>
+  <div class="small-9 columns">
+    <%= text_field_tag :query, params[:query] %>
+  </div>
+  <div class="small-2 columns end">
+    <%= submit_tag "Search", class: "button", id: "searchbutton" %>
+    <% end %>
+  </div>
+</div>
 
-<%= link_to "Create Course", new_course_path, class: 'button' %>
+<h4 style="padding-left: 6px;">
+  Recently added courses:
+</h4>
+<% @courses.each do |course| %>
+  <div class="row holes-table">
+    <%= link_to course.name, course %>
+  </div>
+<% end %>
+<div class="row course-footer">
+  <%= link_to "Create Course", new_course_path, class: 'button' %>
+</div>

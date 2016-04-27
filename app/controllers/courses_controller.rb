@@ -11,8 +11,16 @@ class CoursesController < ApplicationController
     end
   end
 
+  def search
+   @courses = Course.search(params[:query])
+   if @courses.empty?
+     flash[:alert] = "Sorry, but we couldn't find any orders matching '#{params[:query]}'"
+   end
+     render :index
+  end
+
   def index
-    @courses = Course.all
+    @courses = Course.all.order(id: :desc).limit(10)
   end
 
   def new
