@@ -26,6 +26,8 @@ group :development, :test do
   gem 'simplecov'
   gem 'coveralls', require: false
   gem 'selenium-webdriver', '~> 2.53'
+  gem 'vcr'
+  gem 'webmock'
 end
 
 group :development do

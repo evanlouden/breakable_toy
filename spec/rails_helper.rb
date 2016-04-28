@@ -24,4 +24,4 @@ end
 
 def clear_matches
   Match.delete_all
-end 
+end

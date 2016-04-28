@@ -26,7 +26,7 @@ class HolescoresController < ApplicationController
       @previous_hole = Holescore.find_by(match: @match, user: current_user, hole: @holescore.hole.hole_number - 1)
       @next_hole = Holescore.find_by(match: @match, user: current_user, hole: @holescore.hole.hole_number + 1)
     else
-      @match_stared = false
+      @match_started = false
       redirect_to @match
     end
   end

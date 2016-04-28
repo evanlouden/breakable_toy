@@ -1,48 +1,39 @@
 require 'rails_helper'
 
 feature "user creates a match" do
-  Course.create(
-  name: "Pebble Beach",
-  address: "1 Cypress Drive",
-  city: "Monterey",
-  state: "CA",
-  zip: 12345,
-  )
-  scenario do
-    visit new_match_path
-
-    expect(page).to have_content("You need to sign in or sign up before continuing.")
-  end
-
-  scenario "a signed in user can create a match but has to wait for oppenent to join", js: true do
+  scenario "a signed in user can create a match but has to wait for oppenent to join" do
     clear_users
+    clear_courses
+    clear_matches
+    user1 = FactoryGirl.create(:user)
+    user2 = FactoryGirl.create(:user)
+    course =   Course.create(
+      name: "Pebble Beach",
+      address: "1 Cypress Drive",
+      city: "Monterey",
+      state: "CA",
+      zip: 12345,
+      )
+
     visit root_path
-    find('#hamburger').click
-    click_on 'Sign Up'
-    fill_in 'Username', with: 'jordan'
-    fill_in 'Email', with: 'joran@ua.com'
-    fill_in 'Handicap', with: 3
-    fill_in 'Password', with: 'password'
-    fill_in 'Password Confirmation', with: 'password'
-    click_button 'Sign Up'
-    find('#hamburger').click
-    click_link 'Sign Out'
-    find('#hamburger').click
-    click_on 'Sign Up'
-    fill_in 'Username', with: 'rickie'
-    fill_in 'Email', with: 'rickie@puma.com'
-    fill_in 'Handicap', with: 6
-    fill_in 'Password', with: 'password'
-    fill_in 'Password Confirmation', with: 'password'
-    click_button 'Sign Up'
-    find('#hamburger').click
+    click_on 'Sign In'
+    fill_in 'Username/Email', with: user1.username
+    fill_in 'Password', with: user1.password
+    click_button 'Sign In'
+
     click_link "New Match"
-    select('jordan', from: 'match[villain_id]')
-    select('Pebble Beach', from: 'match[course_id]')
+    select(user2.username, from: 'match[villain_id]')
+    select(course.name, from: 'match[course_id]')
     click_button 'Create Match'
 
     expect(page).to have_content('Match created. Play well.')
     expect(page).to have_content("Waiting on opponent to join...")
-    expect(page).to_not have_content('rickie')
+    expect(page).to_not have_content(user2.username)
+  end
+
+  scenario do
+    visit new_match_path
+
+    expect(page).to have_content("You need to sign in or sign up before continuing.")
   end
 end

@@ -17,12 +17,16 @@
  */
 @import 'settings';
 
-.buffer {
-  margin-top: 30px;
+.main {
+  margin-top: 10px;
 }
 
+.top-bar {
+  margin-top: 20px;
+}
 .notice {
   height: 40px;
+  margin-top: 10px;
   padding-top: 10px;
   padding-left: 10px;
   background-color: map-get($foundation-palette, success);
@@ -36,6 +40,7 @@
 }
 
 .holes {
+  padding-top: 5px;
   padding-left: 30px;
 }
 .hole {
@@ -215,11 +220,26 @@
 }
 
 .centered-text {
-  padding-top: 6px;
+
+  margin-right: 5px;
+  margin-left: 5px;
+  padding-top: 5px;
+  padding-bottom: 5px;
   text-align: center;
+  border-radius: 5px;
+}
+
+.winning {
   background-color: map-get($foundation-palette, success);
 }
 
+.all-square {
+  background-color: $light-gray;
+}
+
+.losing {
+  background-color: map-get($foundation-palette, alert);
+}
 .centered-text-plain {
   padding-top: 6px;
   text-align: center;

@@ -1,8 +1,7 @@
 class WelcomeController < ApplicationController
 
   def index
-    geolocation = nil
-    # geolocation = HTTParty.get('http://ip-api.com/json')
+    geolocation = HTTParty.get('http://ip-api.com/json')
     unless geolocation.nil?
       @state = geolocation["region"]
       @city = geolocation["city"]

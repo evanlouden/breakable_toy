@@ -3,7 +3,6 @@ require 'rails_helper'
 feature 'sign up' do
   scenario 'specifying valid and required information' do
     visit root_path
-    save_and_open_page
 
     click_link 'Sign Up'
     fill_in 'Username', with: 'Jack'
