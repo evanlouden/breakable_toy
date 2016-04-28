@@ -3,9 +3,11 @@ require 'rails_helper'
 feature 'sign up' do
   scenario 'specifying valid and required information' do
     visit root_path
+    save_and_open_page
+
     click_link 'Sign Up'
-    fill_in 'Username', with: 'Tiger'
-    fill_in 'Email', with: 'user@example.com'
+    fill_in 'Username', with: 'Jack'
+    fill_in 'Email', with: 'nicklaus@example.com'
     fill_in 'Handicap', with: 10
     fill_in 'Password', with: 'password'
     fill_in 'Password Confirmation', with: 'password'

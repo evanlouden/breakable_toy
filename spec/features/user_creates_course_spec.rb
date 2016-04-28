@@ -1,17 +1,19 @@
 require 'rails_helper'
 
-feature "user creates a course" do
+feature "user creates a course", js: true do
   context "user is signed in" do
-    before(:each) do
-      clear_users
-      FactoryGirl.create(:user, username: 'Tiger')
-      visit new_user_session_path
-      fill_in 'Username/Email', with: 'Tiger'
-      fill_in 'Password', with: 'password'
-      click_button 'Sign In'
-    end
-
+    clear_users
+    clear_courses
     scenario "after signing in a user creates a course" do
+      visit root_path
+      find('#hamburger').click
+      click_on 'Sign Up'
+      fill_in 'Username', with: 'tiger'
+      fill_in 'Email', with: 'tiger@nike.com'
+      fill_in 'Handicap', with: 3
+      fill_in 'Password', with: 'password'
+      fill_in 'Password Confirmation', with: 'password'
+      click_button 'Sign Up'
       click_on 'Create Course'
       fill_in 'Course Name', with: "Pacific Dunes"
       fill_in 'Address', with: '1 Bandon Place'
@@ -28,6 +30,15 @@ feature "user creates a course" do
     end
 
     scenario "a user can't create a course without valid information" do
+      visit root_path
+      find('#hamburger').click
+      click_on 'Sign Up'
+      fill_in 'Username', with: 'phil'
+      fill_in 'Email', with: 'phil@calloway.com'
+      fill_in 'Handicap', with: 3
+      fill_in 'Password', with: 'password'
+      fill_in 'Password Confirmation', with: 'password'
+      click_button 'Sign Up'
       click_on 'Create Course'
       fill_in 'Course Name', with: "Pacific Dunes"
       fill_in 'Address', with: ''
@@ -45,6 +56,8 @@ feature "user creates a course" do
 
   scenario "user must login to create a course" do
     visit root_path
+    find('#hamburger').click
+    click_on 'View Courses'
     click_link 'Create Course'
 
     expect(page).to have_content('You need to sign in or sign up before continuing.')

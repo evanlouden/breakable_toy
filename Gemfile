@@ -25,6 +25,7 @@ group :development, :test do
   gem 'faker'
   gem 'simplecov'
   gem 'coveralls', require: false
+  gem 'selenium-webdriver', '~> 2.53'
 end
 
 group :development do

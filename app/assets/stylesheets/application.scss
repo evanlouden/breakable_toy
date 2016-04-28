@@ -18,7 +18,7 @@
 @import 'settings';
 
 .buffer {
-  margin-top: 50px;
+  margin-top: 30px;
 }
 
 .notice {
@@ -60,6 +60,7 @@
 }
 
 .match-score-header {
+  margin-top: 10px;
   border-bottom: 1px;
   border-bottom-style: dotted;
 }
@@ -211,4 +212,15 @@
 .splash {
   padding-top: 20px;
   padding-bottom: 20px;
+}
+
+.centered-text {
+  padding-top: 6px;
+  text-align: center;
+  background-color: map-get($foundation-palette, success);
+}
+
+.centered-text-plain {
+  padding-top: 6px;
+  text-align: center;
 }
