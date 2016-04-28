@@ -24,6 +24,7 @@
 .top-bar {
   margin-top: 20px;
 }
+
 .notice {
   height: 40px;
   margin-top: 10px;
@@ -40,8 +41,8 @@
 }
 
 .holes {
-  padding-top: 5px;
   padding-left: 30px;
+  padding-top: 5px;
 }
 .hole {
   width: 45px;
@@ -65,9 +66,9 @@
 }
 
 .match-score-header {
-  margin-top: 10px;
   border-bottom: 1px;
   border-bottom-style: dotted;
+  margin-top: 10px;
 }
 
 .match-footer {
@@ -95,10 +96,6 @@
 .holes-table:nth-child(even) {
   border-top: 0px;
   background: $white;
-}
-
-.winning {
-  background-color: success;
 }
 
 .match-score {
@@ -220,13 +217,12 @@
 }
 
 .centered-text {
-
-  margin-right: 5px;
-  margin-left: 5px;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  text-align: center;
   border-radius: 5px;
+  margin-left: 5px;
+  margin-right: 5px;
+  padding-bottom: 5px;
+  padding-top: 5px;
+  text-align: center;
 }
 
 .winning {
@@ -240,6 +236,7 @@
 .losing {
   background-color: map-get($foundation-palette, alert);
 }
+
 .centered-text-plain {
   padding-top: 6px;
   text-align: center;
