@@ -22,9 +22,9 @@ Rails.application.routes.draw do
     resources :holes, only: [:create]
   end
   resources :users, only: [:show]
-  resources :matches, only: [:index, :new, :create]
+  resources :matches, only: [:new, :create]
   resources :matches, only: [:show] do
-    resources :holescores, only: [:index, :show, :create, :update]
+    resources :holescores, only: [:index, :show, :update]
   end
 
   resources :welcome, only: [:index]

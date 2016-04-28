@@ -1,13 +1,4 @@
 class HolescoresController < ApplicationController
-  def create
-    @match = Match.find(params[:match_id])
-    @holescore = Holescore.new(holescore_params)
-    assign_strokes(@holescore, current_user, @match)
-    calculate_net_score(@holescore)
-    @holescore.save
-    redirect_to @holescore.match
-  end
-
   def show
     @pars = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
     @match = Match.find(params[:match_id])

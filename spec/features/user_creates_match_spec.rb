@@ -2,9 +2,6 @@ require 'rails_helper'
 
 feature "user creates a match" do
   scenario "a signed in user can create a match but has to wait for oppenent to join" do
-    clear_users
-    clear_courses
-    clear_matches
     user1 = FactoryGirl.create(:user)
     user2 = FactoryGirl.create(:user)
     course =   Course.create(
