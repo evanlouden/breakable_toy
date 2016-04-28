@@ -34,5 +34,10 @@ group :development do
   gem 'web-console', '~> 2.0'
   gem 'spring'
 end
+
+group :test do
+  gem 'database_cleaner'
+end
+
 gem 'rails_12factor', group: :production
 ruby "2.2.3"

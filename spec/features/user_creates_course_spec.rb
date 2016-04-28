@@ -2,8 +2,6 @@ require 'rails_helper'
 
 feature "user creates a course" do
   before(:each) do
-    clear_users
-    clear_courses
     user = FactoryGirl.create(:user)
     visit root_path
     click_on 'Sign In'

@@ -12,10 +12,6 @@ class MatchesController < ApplicationController
     redirect_to match_path(@match)
   end
 
-  def index
-    @matches = Match.all
-  end
-
   def new
     @match = Match.new
     @courses_available_for_ghost = []
