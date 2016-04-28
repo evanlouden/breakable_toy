@@ -1,22 +1,26 @@
-
-<div class="small-6 small-centered columns splash">
-  <h2>
-    <%= @city %>, <%= @state %>
-  </h2>
-</div>
-
-<% @weather_data.each do |hour| %>
-  <div class="small-6 small-centered columns">
-    <%= "#{hour[:temp]} °   " %>
-    <%= image_tag "#{hour[:icon]}", class: 'weather-icon' %>
-    <%= "   #{hour[:pop]} %" %>
+<% if @city.nil? || @state.nil? %>
+  <h2> Welcome to Match Play </h2>
+<% else %>
+  <div class="small-6 small-centered columns splash">
+    <h2>
+      <%= @city %>, <%= @state %>
+    </h2>
   </div>
-<% end %>
-<div class="small-6 small-centered columns splash">
-<h2>
-  <%= "Sunset  #{@sunset}" %>
-</h2>
-</div>
-<div class="small-6 small-centered columns splash">
+  <% unless @weather_data.empty? %>
+    <% @weather_data.each do |hour| %>
+      <div class="small-6 small-centered columns">
+        <%= "#{hour[:temp]} °   " %>
+        <%= image_tag "#{hour[:icon]}", class: 'weather-icon' %>
+        <%= "   #{hour[:pop]} %" %>
+      </div>
+    <% end %>
+    <div class="small-6 small-centered columns splash">
+    <h2>
+      <%= "Sunset  #{@sunset}" %>
+    </h2>
+    </div>
+    <div class="small-6 small-centered columns splash">
 
-</div>
+    </div>
+  <% end %>
+<% end %>

@@ -9,13 +9,15 @@
     </div>
   </div>
   <div class="small-12 large-8 columns end match-status">
+    <div class="centered-text">
     Match status: <%= @match_status %>
+  </div>
   </div>
   <% @holescores.each do |holescore| %>
     <% if holescore.strokes > 0 %>
-      <% @button_class = "hollow" %>
-    <% else %>
       <% @button_class = "" %>
+    <% else %>
+      <% @button_class = "hollow" %>
     <% end %>
     <div class="small-4 columns holes">
       <%= link_to "#{holescore.hole.hole_number}", match_holescore_path(@match, holescore), class: "#{@button_class} hole button" %>

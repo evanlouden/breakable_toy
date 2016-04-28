@@ -2,6 +2,7 @@ require 'rails_helper'
 
 feature "user adds a new hole to a course" do
   before(:each) do
+    clear_users
     FactoryGirl.create(:user, username: 'Tiger')
     visit new_user_session_path
     fill_in 'Username/Email', with: 'Tiger'
@@ -14,7 +15,7 @@ feature "user adds a new hole to a course" do
       address: "123 Fairway Drive",
       city: "Bandon",
       state: "OR",
-      zip: 97411,
+      zip: 11111,
     )
     visit course_path(@course)
   end
@@ -46,7 +47,7 @@ feature "user adds a new hole to a course" do
     click_button 'Add Hole'
 
     expect(page).to have_content('Par is not included in the list')
-    expect(page).to_not have_content(8)
+    expect(page).to_not have_content(7)
   end
 
   scenario "a signed in user enter a par not between 1 and 18" do

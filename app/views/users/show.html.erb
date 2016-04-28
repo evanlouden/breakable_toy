@@ -1,7 +1,8 @@
-<%= current_user.username %>
-<h3>
-  Created Matches:
-</h3>
+<div class="centered-text-plain">
+  <h3>
+    Created Matches:
+  </h3>
+</div>
 <% unless @created_matches.empty? %>
 <div class="match-header">
   <% @created_matches.each do |match| %>
@@ -11,9 +12,11 @@
   <% end %>
 </div>
 <% end %>
-<h3>
-  Invited Matches:
-</h3>
+<div class="centered-text-plain">
+  <h3>
+    Invited Matches:
+  </h3>
+</div>
 <% unless @invited_matches.empty? %>
   <div class="match-header">
     <% @invited_matches.each do |match| %>

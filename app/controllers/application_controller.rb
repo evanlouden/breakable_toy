@@ -96,20 +96,26 @@ class ApplicationController < ActionController::Base
   def user_match_status(match)
     if match.match_status == 0
       @match_status = "All Square"
+      @match_class = "all-square"
     elsif current_user == match.hero
       if match.match_status > 0
         @match_status = "#{match.match_status} UP"
+        @match_class = "winning"
       else
         @match_status = "#{match.match_status.abs} DOWN"
+        @match_class = "losing"
       end
     else
       if match.match_status < 0
         @match_status = "#{match.match_status.abs} UP"
+        @match_class = "winning"
       else
         @match_status = "#{match.match_status} DOWN"
+        @match_class = "losing"
       end
     end
     @match_status
+    @match_class
   end
 
   def match_started?(match, user)
