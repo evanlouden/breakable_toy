@@ -7,7 +7,7 @@ FactoryGirl.define do
   end
 
   factory :course do
-    sequence(:name) { |n| "Pine Hills #{n}"}
+    sequence(:name) { |n| "Pine Hills #{n}" }
     address "123 Main Street"
     city 'Anytown'
     state 'MA'
