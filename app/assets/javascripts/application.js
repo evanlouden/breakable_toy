@@ -32,7 +32,7 @@ $(document).ready(function(){
    $('#flash-messages').fadeOut('medium',function(){
      $(this).remove();
    });
- }, 300000);
+ }, 3000);
 });
 
 $(document).ready(function() {
