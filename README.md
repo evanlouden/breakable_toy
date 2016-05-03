@@ -15,3 +15,11 @@ Today, most players play for a "score" (i.e. 99, 89, 79). As gratifying as it ca
 Golf originated as a game. Like many other games it was meant to be played by two people, against each other. However, at some point "old man par" came in to play and the game switched from a competition between competitors to an individual game against an imaginary (and unbeatable) opponent. Despite the fact that shooting a personal best or playing against "old man par" can be entertaining, there is no substitute for the exciting back and forth that a match between two competitors can provide.
 
 I firmly believe, match play is the most entertaining form of golf and this app is designed with the sole purpose of facilitating just that. Find a friend. Figure out your handicaps. Play a match.
+
+This is an open-source Golf Match Play built with Ruby on Rails.
+
+Some of the technologies used in development are: Devise Authentication, Javascript, PostgreSQL, and Foundation CSS.
+
+Users start a match by creating a new match from the menu. The other user can then see and join matches by clicking their username in the menu and clicking on the appropriate match from the list.
+
+The game will auto adjust handicaps of the players for each match and assign strokes based on adjusted handicaps and hole difficulty. 
