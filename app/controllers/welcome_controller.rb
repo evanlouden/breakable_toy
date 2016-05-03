@@ -1,9 +1,9 @@
 class WelcomeController < ApplicationController
-
   def index
-    geolocation = HTTParty.get('http://ip-api.com/json')
+    ip = request.remote_ip
+    geolocation = HTTParty.get("http://freegeoip.net/json/#{ip}")
     unless geolocation.nil?
-      @state = geolocation["region"]
+      @state = geolocation["region_code"]
       @city = geolocation["city"]
       key = ENV["WUNDERGROUND_KEY"]
       hourly_weather = HTTParty.get("http://api.wunderground.com/api/#{key}/hourly/q/#{@state}/#{@city}.json")
