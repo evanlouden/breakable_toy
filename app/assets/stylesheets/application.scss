@@ -17,12 +17,23 @@
  */
 @import 'settings';
 
-.main {
-  margin-top: 10px;
+.course-show {
+  padding-left: 35px;
+  padding-top: 20px;
 }
 
-.top-bar {
+.course-search {
+  padding-left: 20px;
+  padding-right: 10px;
   margin-top: 20px;
+}
+.match-new {
+  padding-left: 25px;
+  padding-top: 20px;
+}
+
+.match-header {
+  padding-left: 10px;
 }
 
 .notice {
@@ -57,18 +68,15 @@
   height: 50px;
   padding-top: 10px;
   padding-bottom: 10px;
-}
-
-.match-header {
-  padding-left: 60px;
-  height: 75px;
-  padding-top: 20px;
+  border-top: 1px;
+  border-top-style: dotted;
 }
 
 .match-score-header {
   border-bottom: 1px;
   border-bottom-style: dotted;
   margin-top: 10px;
+  margin-left: 30px;
 }
 
 .match-footer {
@@ -240,4 +248,16 @@
 .centered-text-plain {
   padding-top: 6px;
   text-align: center;
+}
+
+.weather-icon {
+  margin: 0 auto;
+  margin-right: 8px;
+  width: 50px;
+  height: 50px;
+}
+
+.background-main {
+  height: 1080px;
+  background-image: url("background.jpg");
 }

@@ -1,5 +1,5 @@
 <% if @city.nil? || @state.nil? %>
-  <h2> Welcome to Match Play </h2>
+  <h4> Welcome to Match Play </h4>
 <% else %>
   <div class="small-6 small-centered columns splash">
     <h2>
@@ -11,7 +11,7 @@
       <div class="small-6 small-centered columns">
         <%= "#{hour[:temp]} °   " %>
         <%= image_tag "#{hour[:icon]}", class: 'weather-icon' %>
-        <%= "   #{hour[:pop]} %" %>
+        <%= " #{hour[:pop]} %"%>
       </div>
     <% end %>
     <div class="small-6 small-centered columns splash">

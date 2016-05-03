@@ -5,7 +5,9 @@ Rails.application.routes.draw do
     root to: "courses#index", as: "authenticated_root"
   end
 
-  root 'welcome#index'
+  root 'courses#index'
+
+  post '/splash/weather', to: 'splash#weather'
 
   resources :courses do
     collection do
@@ -28,4 +30,5 @@ Rails.application.routes.draw do
   end
 
   resources :welcome, only: [:index]
+  resources :splash, only: [:index]
 end

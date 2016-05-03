@@ -11,8 +11,6 @@
   </head>
 
   <body>
-    <div class="top-bar">
-    </div>
     <div class="mobilenav">
       <%= render 'layouts/nav' %>
     </div>
@@ -24,9 +22,8 @@
         </div>
       </a>
       <%= render 'layouts/flash' %>
-      <div class="row main">
+      <div class="row small-12 medium-8 large-9 columns">
         <div class="column">
-
 
           <%= yield %>
 
@@ -35,4 +32,4 @@
 
     <%= javascript_include_tag "application" %>
   </body>
-  </html>
+</html>

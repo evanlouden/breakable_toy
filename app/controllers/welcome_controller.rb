@@ -3,8 +3,13 @@ class WelcomeController < ApplicationController
     ip = request.remote_ip
     geolocation = HTTParty.get("http://freegeoip.net/json/#{ip}")
     unless geolocation.nil?
-      @state = geolocation["region_code"]
-      @city = geolocation["city"]
+      if geolocation["region_code"] == '' || geolocation['city'] == ''
+        @state = "MA"
+        @city = "Boston"
+      else
+        @state = geolocation["region_code"]
+        @city = geolocation["city"]
+      end
       key = ENV["WUNDERGROUND_KEY"]
       hourly_weather = HTTParty.get("http://api.wunderground.com/api/#{key}/hourly/q/#{@state}/#{@city}.json")
       astronomy = HTTParty.get("http://api.wunderground.com/api/#{key}/astronomy/q/#{@state}/#{@city}.json")
