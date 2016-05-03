@@ -2,7 +2,6 @@ class WelcomeController < ApplicationController
   def index
     ip = request.remote_ip
     geolocation = HTTParty.get("http://freegeoip.net/json/#{ip}")
-    binding.pry
     unless geolocation.nil?
       @state = geolocation["region_code"]
       @city = geolocation["city"]
