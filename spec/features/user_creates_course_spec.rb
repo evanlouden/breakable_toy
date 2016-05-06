@@ -47,6 +47,6 @@ feature "user creates a course" do
     click_link 'View Courses'
     click_link 'Create Course'
 
-    expect(page).to have_content('You need to sign in or sign up before continuing.')
+    expect(page).to have_content("Please sign in or sign up to continue.")
   end
 end
