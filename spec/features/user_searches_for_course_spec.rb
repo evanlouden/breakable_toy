@@ -23,7 +23,7 @@ feature "user searches for a course" do
     fill_in('query', with: "Shinnecock Hills")
     click_button 'Search'
 
-    expect(page).to have_content 'You need to sign in or sign up before continuing'
-    expect(page).to_not have_content 'Shinnecock Hills'
+    expect(page).to have_content("Please sign in or sign up to continue.")
+    expect(page).to_not have_content("Shinnecock Hills")
   end
 end

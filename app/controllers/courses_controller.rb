@@ -14,7 +14,8 @@ class CoursesController < ApplicationController
   def search
    @courses = Course.search(params[:query])
    if @courses.empty?
-     flash[:alert] = "Sorry, but we couldn't find any orders matching '#{params[:query]}'"
+     @courses = Course.all
+     flash[:alert] = "No matches for: '#{params[:query]}'"
    end
      render :index
   end

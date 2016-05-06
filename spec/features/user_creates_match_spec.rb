@@ -31,6 +31,6 @@ feature "user creates a match" do
   scenario do
     visit new_match_path
 
-    expect(page).to have_content("You need to sign in or sign up before continuing.")
+    expect(page).to have_content("Please sign in or sign up to continue.")
   end
 end

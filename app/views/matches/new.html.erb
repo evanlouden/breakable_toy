@@ -2,11 +2,10 @@
   <h3 class="match-header">
     Create a match
   </h3>
-
   <%= form_for(@match) do |f| %>
     <div class="large-8 columns">
       <%= f.label :opponent, 'Opponent' %>
-      <%= f.select :villain_id, options_from_collection_for_select(User.all, :id, :username) %>
+      <%= f.select :villain_id, options_from_collection_for_select(@available_opponents, :id, :username) %>
     </div>
     <div class="large-8 columns">
       <%= f.label :course, 'Course' %>
