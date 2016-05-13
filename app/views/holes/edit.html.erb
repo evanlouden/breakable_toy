@@ -1,0 +1,34 @@
+<div class="course-show">
+
+<h3>
+  <%= @course.name %>
+</h3>
+<ul class="no-bullet">
+  <li>
+    <%= @course.address %>
+  </li>
+  <li>
+    <%= @course.city %> <%= @course.state %>, <%= @course.zip %>
+  </li>
+</ul>
+</div>
+<div class="row">
+  <%= form_for [@course, @hole] do |f| %>
+  <div class="small-3 columns">
+    <%= f.label :hole_number, 'Hole' %>
+    <%= f.text_field :hole_number %>
+  </div>
+  <div class="small-3 columns">
+    <%= f.label :par %>
+    <%= f.text_field :par %>
+  </div>
+  <div class="small-3 columns">
+    <%= f.label :difficulty %>
+    <%= f.text_field :difficulty %>
+  </div>
+  <div class="add-hole">
+  <br/>
+    <%= f.submit "Update Hole", class: 'success button' %>
+  </div>
+</div>
+<% end %>

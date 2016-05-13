@@ -11,6 +11,7 @@ feature "user creates a course" do
   end
 
   scenario "after signing in a user creates a course" do
+    click_link 'View Courses'
     click_on 'Create Course'
     fill_in 'Course Name', with: "Pacific Dunes"
     fill_in 'Address', with: '1 Bandon Place'
@@ -27,6 +28,7 @@ feature "user creates a course" do
   end
 
   scenario "a user can't create a course without valid information" do
+    click_link 'View Courses'
     click_on 'Create Course'
     fill_in 'Course Name', with: "Cabot Links"
     fill_in 'Address', with: ''

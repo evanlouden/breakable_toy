@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160416021302) do
+ActiveRecord::Schema.define(version: 20160512215019) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,14 +41,15 @@ ActiveRecord::Schema.define(version: 20160416021302) do
   end
 
   create_table "matches", force: :cascade do |t|
-    t.integer  "match_status",         default: 0, null: false
-    t.integer  "hero_id",                          null: false
-    t.integer  "villain_id",                       null: false
-    t.integer  "hero_adj_handicap",                null: false
-    t.integer  "villain_adj_handicap",             null: false
-    t.integer  "course_id",                        null: false
+    t.integer  "match_status",         default: 0,     null: false
+    t.integer  "hero_id",                              null: false
+    t.integer  "villain_id",                           null: false
+    t.integer  "hero_adj_handicap",                    null: false
+    t.integer  "villain_adj_handicap",                 null: false
+    t.integer  "course_id",                            null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "match_completed",      default: false
   end
 
   add_index "matches", ["hero_id"], name: "index_matches_on_hero_id", using: :btree

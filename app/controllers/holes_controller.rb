@@ -27,6 +27,24 @@ class HolesController < ApplicationController
     redirect_to course_path(@course)
   end
 
+  def update
+    @course = Course.find(params[:course_id])
+    @hole = Hole.find(params[:id])
+    if @hole.update(hole_params)
+      flash[:notice] = "Hole \##{@hole.hole_number} updated."
+      redirect_to course_path(@course)
+    else
+      flash[:alert] = @hole.errors.full_messages.join(", ")
+      render :edit
+    end
+  end
+
+  def edit
+    @course = Course.find(params[:course_id])
+    @hole = Hole.find(params[:id])
+
+  end
+
   private
 
   def hole_params

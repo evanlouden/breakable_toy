@@ -15,16 +15,12 @@ feature 'user can see the match show page' do
     fill_in "Username/Email", with: user1.username
     fill_in "Password", with: user1.password
     click_button 'Sign In'
-    click_link "Handicap"
-    click_link user2.username
     click_link 'Sign Out'
 
     click_link 'Sign In'
     fill_in "Username/Email", with: user2.username
     fill_in "Password", with: user2.password
     click_button 'Sign In'
-    click_link "Handicap"
-    click_link user1.username
 
     expect(page).to have_content course.name
     expect(page).to have_content "Opponent: #{user1.username}"

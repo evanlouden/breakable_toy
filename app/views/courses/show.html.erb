@@ -10,8 +10,8 @@
   <li>
     <%= @course.city %> <%= @course.state %>, <%= @course.zip %>
   </li>
-</div>
 </ul>
+</div>
 <div class="row">
   <div class="small-3 columns">
     Hole #
@@ -26,7 +26,7 @@
 
   </div>
 </div>
-<% @course.holes.each do |hole| %>
+<% @holes.each do |hole| %>
   <div class="row holes-table">
     <div class="small-3 columns">
       <%= hole.hole_number %>
@@ -38,7 +38,7 @@
     <%= hole.difficulty %>
     </div>
     <div class="small-3 columns">
-
+    <%= link_to 'Edit', edit_course_hole_path(@course, hole) %>
     </div>
   </div>
 <% end %>
