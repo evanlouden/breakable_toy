@@ -25,8 +25,6 @@ group :development, :test do
   gem 'faker'
   gem 'simplecov'
   gem 'coveralls', require: false
-  gem 'selenium-webdriver', '~> 2.53'
-  gem 'vcr'
 end
 
 group :development do
@@ -36,7 +34,6 @@ end
 
 group :test do
   gem 'database_cleaner'
-  gem 'webmock'
 end
 
 gem 'rails_12factor', group: :production

@@ -12,7 +12,7 @@ feature "user searches for a course" do
     fill_in 'Username/Email', with: user.username
     fill_in 'Password', with: user.password
     click_button 'Sign In'
-
+    click_link 'View Courses'
     fill_in 'query', with: course.name
     click_button 'Search'
     expect(page).to have_content course.name

@@ -23,10 +23,16 @@
       <%= link_to "#{holescore.hole.hole_number}", match_holescore_path(@match, holescore), class: "#{@button_class} hole button" %>
     </div>
   <% end %>
+  <% unless @match.match_completed == true %>
+  <div class="small-12 large-8 centered-text">
+      <%= link_to 'Finish Match', match_path(@match), class: "success button", method: :patch, data: {confirm: "Finish Match?"} %>
+    </div>
+  <% end %>
 <% else %>
   <div class="callout">
     <p>
       Waiting on opponent to join...
     </p>
+      <%= link_to 'Delete Match', match_path(@match), method: :delete, confirm: 'Are you sure?' %>
   </div>
 <% end %>

@@ -12,6 +12,12 @@ class MatchesController < ApplicationController
     redirect_to match_path(@match)
   end
 
+  def destroy
+    @match = Match.find(params[:id])
+    @match.destroy
+    redirect_to user_path
+  end
+
   def new
     @available_opponents = []
     @sorted_users = User.all.sort { |x, y| x.username.casecmp(y.username) }
@@ -64,6 +70,12 @@ class MatchesController < ApplicationController
     redirect_to @match
   end
 
+  def update
+    @match = Match.find(params[:id])
+    @match.match_completed = true
+    @match.save
+    redirect_to root_path
+  end
   private
 
   def match_params

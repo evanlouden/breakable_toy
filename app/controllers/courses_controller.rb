@@ -31,6 +31,7 @@ class CoursesController < ApplicationController
 
   def show
     @course = Course.find(params[:id])
+    @holes = Hole.where(course: @course).order(hole_number: :asc)
     @hole = Hole.new
   end
 

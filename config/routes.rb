@@ -2,18 +2,17 @@ Rails.application.routes.draw do
   devise_for :users
 
   authenticated :user do
-    root to: "courses#index", as: "authenticated_root"
+    root to: "users#show", as: "authenticated_root"
   end
 
   root 'courses#index'
-
-  post '/splash/weather', to: 'splash#weather'
 
   resources :courses do
     collection do
       get 'search'
     end
   end
+
   resources :matches do
     collection do
       get 'ghost'
@@ -21,10 +20,10 @@ Rails.application.routes.draw do
   end
   resources :courses, only: [:index, :new, :create]
   resources :courses, only: [:show] do
-    resources :holes, only: [:create]
+    resources :holes, only: [:create, :edit, :update]
   end
   resources :users, only: [:show]
-  resources :matches, only: [:new, :create]
+  resources :matches, only: [:new, :create, :destroy, :update]
   resources :matches, only: [:show] do
     resources :holescores, only: [:index, :show, :update]
   end
