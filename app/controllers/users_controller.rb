@@ -6,7 +6,6 @@ class UsersController < ApplicationController
       redirect_to match_path(@active_matches.first)
     end
     if @active_matches.empty? && @completed_matches.empty?
-      binding.pry
       redirect_to courses_path
     end
   end
