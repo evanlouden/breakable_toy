@@ -6,8 +6,8 @@ feature 'user can enter a holescore' do
     user2 = FactoryGirl.create(:user)
     course = FactoryGirl.create(:course)
     Match.create(hero: user1, villain: user2, hero_adj_handicap: 0, villain_adj_handicap: 5, course: course)
-    18.times do
-      FactoryGirl.create(:hole, course: course)
+    5.times do |n|
+      Hole.create(hole_number: n + 1, difficulty: n + 1, course: course, par: 4)
     end
 
     visit root_path
