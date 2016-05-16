@@ -114,8 +114,6 @@ class ApplicationController < ActionController::Base
         @match_class = "losing"
       end
     end
-    @match_status
-    @match_class
   end
 
   def match_started?(match, user)
@@ -153,5 +151,9 @@ class ApplicationController < ActionController::Base
       @opponent_adjusted_handicap = match.hero_adj_handicap
       @adjusted_handicap = match.villain_adj_handicap
     end
+  end
+
+  def calculate_round_score
+
   end
 end

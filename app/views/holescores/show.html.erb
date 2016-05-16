@@ -16,7 +16,7 @@
   <div class="small-4 large-4 columns middle">
     Gross Score:
   </div>
-  <div class="small-4 large-4 columns">
+  <div class="small-4 large-4 columns" id="user_gross_score">
     <% if @holescore.gross_score.nil? %>
       -
     <% else %>
@@ -72,23 +72,19 @@
 
 <% if @holescore.gross_score.nil? %>
 <div class="match-submit">
-  <div class="small-6 large-4 columns">
-      <%= form_for [@match, @holescore] do |f| %>
+  <div class="small-8 large-4 columns">
+    <%= form_for [@match, @holescore] do |f| %>
       <%= f.select :gross_score, options_for_select(@pars, @holescore.hole.par) %>
-  </div>
-  <div class="small-6 large-4 columns end">
-    <%= f.submit "Enter Score", class: 'success button' %>
+      <%= f.submit "Enter Score", class: 'success button' %>
     <% end %>
   </div>
 </div>
 <% else %>
 <div class="match-submit">
-  <div class="small-6 large-4 columns">
-      <%= form_for [@match, @holescore] do |f| %>
+  <div class="small-8 large-4 columns">
+    <%= form_for [@match, @holescore] do |f| %>
       <%= f.select :gross_score, options_for_select(@pars, @holescore.hole.par) %>
-  </div>
-  <div class="small-6 large-4 columns end">
-    <%= f.submit "Update Score", class: 'success button' %>
+      <%= f.submit "Update Score", class: 'success button' %>
     <% end %>
   </div>
 </div>
