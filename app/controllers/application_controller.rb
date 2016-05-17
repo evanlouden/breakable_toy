@@ -61,38 +61,6 @@ class ApplicationController < ActionController::Base
     holescore.net_score = holescore.gross_score - holescore.strokes
   end
 
-  def display_strokes(hole, user, match)
-    if match.hero == user
-      if match.hero_adj_handicap <= 18
-        if hole.difficulty <= match.hero_adj_handicap
-          @strokes = 1
-        else
-          @strokes = 0
-        end
-      elsif match.hero_adj_handicap > 18
-        if (hole.difficulty + 18) <= match.hero_adj_handicap
-          @strokes = 2
-        else
-          @strokes = 1
-        end
-      end
-    else
-      if match.villain_adj_handicap <= 18
-        if hole.difficulty <= match.villain_adj_handicap
-          @strokes = 1
-        else
-          @strokes = 0
-        end
-      elsif match.villain_adj_handicap > 18
-        if (hole.difficulty + 18) <= match.villain_adj_handicap
-          @strokes = 2
-        else
-          @strokes = 1
-        end
-      end
-    end
-  end
-
   def user_match_status(match)
     if match.match_status == 0
       @match_status = "All Square"

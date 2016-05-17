@@ -19,6 +19,7 @@ class MatchesController < ApplicationController
   end
 
   def new
+    @match = Match.new
     @available_opponents = []
     @sorted_users = User.all.sort { |x, y| x.username.casecmp(y.username) }
     @sorted_users.each do |user|
@@ -26,7 +27,7 @@ class MatchesController < ApplicationController
         @available_opponents << user
       end
     end
-    @match = Match.new
+    @sorted_courses = Course.all.sort { |x, y| x.name.casecmp(ye.name) }
     @courses_available_for_ghost = []
     Match.all.each do |match|
       unless @courses_available_for_ghost.include?(match.course)
