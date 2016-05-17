@@ -9,7 +9,7 @@
     </div>
     <div class="large-8 columns">
       <%= f.label :course, 'Course' %>
-      <%= f.select :course_id, options_from_collection_for_select(Course.all, :id, :name) %>
+      <%= f.select :course_id, options_from_collection_for_select(@sorted_courses, :id, :name) %>
     </div>
     <div class="large-8 columns end">
       <%= f.submit "Create Match", class: 'button'%>
