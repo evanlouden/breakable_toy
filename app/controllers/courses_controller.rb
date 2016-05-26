@@ -32,6 +32,11 @@ class CoursesController < ApplicationController
   def show
     @course = Course.find(params[:id])
     @holes = Hole.where(course: @course).order(hole_number: :asc)
+    if @holes.empty?
+      @next_hole_number = 1
+    else
+      @next_hole_number = @holes.last.hole_number + 1
+    end 
     @hole = Hole.new
   end
 

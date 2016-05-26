@@ -24,7 +24,6 @@ feature "user adds a new hole to a course" do
     fill_in('Difficulty', with: 3)
     click_button 'Add Hole'
 
-    expect(page).to have_content('Hole #15 saved.')
     expect(page).to have_content(15)
   end
 

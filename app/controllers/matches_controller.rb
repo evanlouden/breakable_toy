@@ -27,7 +27,7 @@ class MatchesController < ApplicationController
         @available_opponents << user
       end
     end
-    @sorted_courses = Course.all.sort { |x, y| x.name.casecmp(ye.name) }
+    @sorted_courses = Course.all.sort { |x, y| x.name.casecmp(y.name) }
     @courses_available_for_ghost = []
     Match.all.each do |match|
       unless @courses_available_for_ghost.include?(match.course)
