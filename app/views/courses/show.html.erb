@@ -45,13 +45,13 @@
 <% unless @course.holes.count == 18 %>
   <div class="row">
     <%= form_for [@course, @hole] do |f| %>
-    <div class="small-3 columns">
+    <div class="small-3 columns" id="new-hole">
       <%= f.label :hole_number, 'Hole' %>
-      <%= f.text_field :hole_number %>
+      <%= f.text_field :hole_number, value: @next_hole_number %>
     </div>
     <div class="small-3 columns">
       <%= f.label :par %>
-      <%= f.text_field :par %>
+      <%= f.text_field :par, autofocus: true %>
     </div>
     <div class="small-3 columns">
       <%= f.label :difficulty %>

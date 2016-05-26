@@ -1,38 +1,50 @@
 <% unless @active_matches.empty? %>
-  <div class="centered-text-plain">
-    <h3>
-      Active Matches:
-    </h3>
+  <div id="active-matches">
+    <div class="centered-text-plain">
+      <h3>
+        Active Matches:
+      </h3>
+    </div>
+    <div class="match-header">
+      <% @active_matches.each do |match| %>
+        <div class="row">
+          <div class="small-8 columns">
+            <% if match.hero == current_user %>
+              <%= link_to "#{match.villain.username} on #{match.created_at.strftime("%B %d, %Y")}", match %>
+            <% else %>
+              <%= link_to "#{match.hero.username} on #{match.created_at.strftime("%B %d, %Y")}", match %>
+            <% end %>
+          </div>
+          <div class="small-4 columns">
+            <%= link_to 'Delete Match', match_path(match), class: "tiny button", method: :delete, data: {confirm: "Are you sure?"} %>
+          </div>
+        </div>
+      <% end %>
+    </div>
   </div>
-  <div class="match-header">
-    <% @active_matches.each do |match| %>
+<% end %>
+<% unless @completed_matches.empty? %>
+  <div id="completed-matches">
+    <div class="centered-text-plain">
+      <h3>
+        Completed Matches:
+      </h3>
+    </div>
+    <div class="match-header">
+      <% @completed_matches.each do |match| %>
       <div class="row">
         <div class="small-8 columns">
-          <%= link_to "#{match.villain.username} on #{match.created_at.strftime("%B %d, %Y")}", match %>
+          <% if match.hero == current_user %>
+            <%= link_to "#{match.villain.username} on #{match.created_at.strftime("%B %d, %Y")}", match %>
+          <% else %>
+            <%= link_to "#{match.hero.username} on #{match.created_at.strftime("%B %d, %Y")}", match %>
+          <% end %>
         </div>
         <div class="small-4 columns">
           <%= link_to 'Delete Match', match_path(match), class: "tiny button", method: :delete, data: {confirm: "Are you sure?"} %>
         </div>
       </div>
-    <% end %>
-  </div>
-<% end %>
-<% unless @completed_matches.empty? %>
-  <div class="centered-text-plain">
-    <h3>
-      Completed Matches:
-    </h3>
-  </div>
-  <div class="match-header">
-    <% @completed_matches.each do |match| %>
-    <div class="row">
-      <div class="small-8 columns">
-        <%= link_to "#{match.hero.username}     #{match.created_at.strftime("%B %d, %Y")}", match %>
-      </div>
-      <div class="small-4 columns">
-        <%= link_to 'Delete Match', match_path(match), class: "tiny button", method: :delete, data: {confirm: "Are you sure?"} %>
-      </div>
+      <% end %>
     </div>
-    <% end %>
   </div>
 <% end %>

@@ -20,7 +20,6 @@ class HolesController < ApplicationController
     elsif difficulty_numbers.include?params[:hole][:difficulty].to_i
       flash[:alert] = "That difficulty has already been entered."
     elsif @hole.save
-      flash[:notice] = "Hole \##{@hole.hole_number} saved."
     else
       flash[:alert] = @hole.errors.full_messages.join(", ")
     end
