@@ -121,7 +121,12 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def calculate_round_score
-
+  def calculate_round_score(match)
+    round_score = 0
+    scores = Holescore.where(user: current_user, match: match)
+    scores.each do |score|
+      round_score += score.gross_score
+    end
+    return round_score
   end
 end

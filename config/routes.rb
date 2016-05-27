@@ -22,12 +22,9 @@ Rails.application.routes.draw do
   resources :courses, only: [:show] do
     resources :holes, only: [:create, :edit, :update]
   end
-  resources :users, only: [:show]
+  resources :users, only: [:show, :update]
   resources :matches, only: [:new, :create, :destroy, :update]
   resources :matches, only: [:show] do
     resources :holescores, only: [:index, :show, :update]
   end
-
-  resources :welcome, only: [:index]
-  resources :splash, only: [:index]
 end
