@@ -57,30 +57,30 @@ feature "user adds a new hole to a course" do
     expect(page).to_not have_content(20)
   end
   scenario "a signed in user enters a duplicate hole number" do
-      fill_in('Hole', with: 9)
-      fill_in('Par', with: 3)
-      fill_in('Difficulty', with: 7)
-      click_button 'Add Hole'
+    fill_in('Hole', with: 9)
+    fill_in('Par', with: 3)
+    fill_in('Difficulty', with: 7)
+    click_button 'Add Hole'
 
-      fill_in('Hole', with: 9)
-      fill_in('Par', with: 3)
-      fill_in('Difficulty', with: 8)
-      click_button 'Add Hole'
+    fill_in('Hole', with: 9)
+    fill_in('Par', with: 3)
+    fill_in('Difficulty', with: 8)
+    click_button 'Add Hole'
 
-      expect(page).to have_content('That hole has already been entered.')
+    expect(page).to have_content('That hole has already been entered.')
   end
 
   scenario "a signed in user enters a duplicate difficulty number" do
-      fill_in('Hole', with: 9)
-      fill_in('Par', with: 3)
-      fill_in('Difficulty', with: 7)
-      click_button 'Add Hole'
+    fill_in('Hole', with: 9)
+    fill_in('Par', with: 3)
+    fill_in('Difficulty', with: 7)
+    click_button 'Add Hole'
 
-      fill_in('Hole', with: 4)
-      fill_in('Par', with: 3)
-      fill_in('Difficulty', with: 7)
-      click_button 'Add Hole'
+    fill_in('Hole', with: 4)
+    fill_in('Par', with: 3)
+    fill_in('Difficulty', with: 7)
+    click_button 'Add Hole'
 
-      expect(page).to have_content('That difficulty has already been entered.')
+    expect(page).to have_content('That difficulty has already been entered.')
   end
 end

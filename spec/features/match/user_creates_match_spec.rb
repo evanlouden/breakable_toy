@@ -4,13 +4,13 @@ feature "user creates a match" do
   scenario "a signed in user can create a match but has to wait for oppenent to join" do
     user1 = FactoryGirl.create(:user)
     user2 = FactoryGirl.create(:user)
-    course =   Course.create(
+    course =  Course.create(
       name: "Pebble Beach",
       address: "1 Cypress Drive",
       city: "Monterey",
       state: "CA",
       zip: 12345,
-      )
+    )
 
     visit root_path
     click_on 'Sign In'

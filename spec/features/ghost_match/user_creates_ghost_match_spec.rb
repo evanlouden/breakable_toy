@@ -2,7 +2,7 @@ require 'rails_helper'
 
 feature "create a ghost match" do
   scenario "a signed in user can create a ghost match" do
-    #create first database user for ghosting
+    # create first database user for ghosting
     FactoryGirl.create(:user, username: 'Ghost')
     user1 = FactoryGirl.create(:user)
     user2 = FactoryGirl.create(:user)
