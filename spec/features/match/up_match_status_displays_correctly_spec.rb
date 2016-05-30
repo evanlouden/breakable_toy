@@ -20,5 +20,17 @@ feature 'match status displays correctly' do
     within("//div[@id='match-status']") do
       expect(page).to have_content "1 UP"
     end
+
+    click_on 'Sign Out'
+
+    click_link 'Sign In'
+    fill_in "Username/Email", with: user2.username
+    fill_in "Password", with: user2.password
+    click_button 'Sign In'
+    click_on '1'
+
+    within("//div[@id='match-status']") do
+      expect(page).to have_content "1 DOWN"
+    end
   end
 end
