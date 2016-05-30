@@ -18,13 +18,19 @@ Rails.application.routes.draw do
       get 'ghost'
     end
   end
+  
   resources :courses, only: [:index, :new, :create]
   resources :courses, only: [:show] do
     resources :holes, only: [:create, :edit, :update]
   end
+
   resources :users, only: [:show, :update]
   resources :matches, only: [:new, :create, :destroy, :update]
   resources :matches, only: [:show] do
     resources :holescores, only: [:index, :show, :update]
+  end
+
+  resources :users do
+    resources :scores, only: [:index]
   end
 end

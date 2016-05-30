@@ -121,12 +121,31 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  # pending
-  # def calculate_round_score(match)
-  #   round_score = 0
-  #   scores = Holescore.where(user: current_user, match: match)
-  #   scores.each do |score|
-  #     round_score += score.gross_score
-  #   end
-  # end
+  def calculate_round_score(match)
+    round_score = 0
+    scores = Holescore.where(user: current_user, match: match)
+    scores.each do |score|
+      round_score += score.gross_score
+    end
+    round_score
+  end
+
+  def calculate_esc_score(match)
+    esc_score = 0
+    scores = Holescore.where(user: current_user, match: match)
+    scores.each do |score|
+      if current_user.handicap <= 9 && score.gross_score >= score.hole.par + 2
+        esc_score += (score.hole.par + 2)
+      elsif current_user.handicap <= 19 && score.gross_score >= 7
+        esc_score += 7
+      elsif current_user.handicap <= 29 && score.gross_score >= 8
+        esc_score += 8
+      elsif current_user.handicap > 29 && score.gross_score >= 9
+        esc_score += 9
+      else
+        esc_score += score.gross_score
+      end
+    end
+    esc_score
+  end
 end

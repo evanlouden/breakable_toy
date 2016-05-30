@@ -1,0 +1,5 @@
+<h1>Round Scores</h1>
+<% @scores.each do |score| %>
+  <%= score[:match].course.name %> - Gross score: <%= score[:gross_score] %>
+   - ESC score: <%= score[:esc_score] %>
+<% end %>
