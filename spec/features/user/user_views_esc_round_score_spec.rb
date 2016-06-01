@@ -76,7 +76,7 @@ feature 'round scores calculate correctly' do
     course = FactoryGirl.create(:course)
     hole1 = Hole.create(hole_number: 1, difficulty: 1, course: course, par: 4)
     hole2 = Hole.create(hole_number: 2, difficulty: 2, course: course, par: 4)
-    match = Match.create(hero: user1, villain: user2, hero_adj_handicap: 0, villain_adj_handicap: 0, course: course)
+    match = Match.create(hero: user2, villain: user1, hero_adj_handicap: 0, villain_adj_handicap: 0, course: course)
     Holescore.create(gross_score: 10, net_score: 10, user: user1, hole: hole1, match: match)
     Holescore.create(gross_score: 5, net_score: 5, user: user2, hole: hole1, match: match)
     Holescore.create(gross_score: 4, net_score: 4, user: user1, hole: hole2, match: match)
