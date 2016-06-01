@@ -34,6 +34,7 @@ end
 
 group :test do
   gem 'database_cleaner'
+  gem "codeclimate-test-reporter", group: :test, require: nil
 end
 
 gem 'rails_12factor', group: :production
