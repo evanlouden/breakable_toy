@@ -3,38 +3,35 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
     <title><%= content_for?(:title) ? yield(:title) : "Match Play" %></title>
-
     <%= stylesheet_link_tag    "application" %>
     <%= csrf_meta_tags %>
   </head>
 
   <body>
-    <div class="mobilenav">
-      <%= render 'layouts/nav' %>
-    </div>
-    <div class="menu-background">
-
-      <a href="javascript:void(0)" class="icon">
-        <div class="hamburger">
-          <div class="menui top-menu" id="hamburger"></div>
-          <div class="menui mid-menu"></div>
-          <div class="menui bottom-menu"></div>
+        <div class="mobilenav">
+          <%= render 'layouts/nav' %>
         </div>
-      </a>
-    </div>
-    <% unless flash.empty? %>
-    <%= render 'layouts/flash' %>
-    <% end %>
-      <div class="row small-12 medium-8 large-9 columns">
-        <div class="column main">
+        <div class="menu-background">
 
-          <%= yield %>
-
+          <a href="javascript:void(0)" class="icon">
+            <div class="hamburger">
+              <div class="menui top-menu" id="hamburger"></div>
+              <div class="menui mid-menu"></div>
+              <div class="menui bottom-menu"></div>
+            </div>
+          </a>
         </div>
-      </div>
+        <% unless flash.empty? %>
+        <%= render 'layouts/flash' %>
+        <% end %>
+        <div class="row small-12 medium-8 large-9 columns">
+          <div class="column main">
 
+            <%= yield %>
+
+          </div>
+        </div>
     <%= javascript_include_tag "application" %>
   </body>
 </html>
