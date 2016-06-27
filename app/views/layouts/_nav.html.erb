@@ -1,6 +1,6 @@
 <% if user_signed_in? %>
-    <li><%= link_to "#{current_user.username}", current_user %></li>
-    <li> <%= link_to "Handicap: #{current_user.handicap}", current_user %>
+    <li><%= link_to "#{current_user.username} - #{current_user.handicap}", current_user %></li>
+    <li><%= link_to "Edit Account", edit_user_registration_path %></li>
     <li> <%= link_to 'Sign Out', destroy_user_session_path, method: :delete %> </li>
     <li> <%= link_to 'New Match', new_match_path %></li>
     <li><%= link_to 'View Courses', courses_path %></li>
