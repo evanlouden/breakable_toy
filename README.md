@@ -25,4 +25,9 @@ Users start a match by creating a new match from the menu. The other user can th
 The game will auto adjust handicaps of the players for each match and assign strokes based on adjusted handicaps and hole difficulty.
 
 Use the app here: http://golfmatchplay.herokuapp.com
-** Note this app is really only functional for two users. For demo purposes you might ask a friend to help. *
+
+
+** Note this app is really only functional for two users. For demo purposes you might ask a friend to help. **
+
+** Also this app is styled exclusively for mobile. Use Chrome DevTools' Device Mode for a proper experience on desktop **
+ 
