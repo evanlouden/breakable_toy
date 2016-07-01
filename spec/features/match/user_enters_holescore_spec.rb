@@ -23,7 +23,7 @@ feature 'user can enter a holescore' do
     click_button 'Sign In'
 
     click_on '1'
-    select '5', from: 'holescore[gross_score]'
+    fill_in 'holescore[gross_score]', with: 5
     click_on 'Enter Score'
 
     within("//div[@id='user_gross_score']") do
