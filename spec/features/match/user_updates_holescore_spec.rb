@@ -23,11 +23,11 @@ feature 'user can enter a holescore' do
     click_button 'Sign In'
 
     click_on '1'
-    select '5', from: 'holescore[gross_score]'
+    fill_in 'holescore[gross_score]', with: 5
     click_on 'Enter Score'
 
-    select '6', from: 'holescore[gross_score]'
-    click_on 'Update Score'
+    fill_in 'holescore[gross_score]', with: 6
+    click_on 'Enter Score'
 
     within("//div[@id='user_gross_score']") do
       expect(page).to have_content '6'

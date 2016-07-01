@@ -27,7 +27,7 @@ feature 'strokes are applied correctly' do
       expect(page).to have_content '1'
     end
 
-    click_on 'Match Home'
+    click_on 'Home'
     click_on '2'
 
     within("//div[@id='user_hole_strokes']") do
