@@ -73,29 +73,30 @@
   </div>
 </div>
 
-
-<div class="small-12 column score-slider">
-  <div class="slider" data-slider data-start="1" data-initial-start="<%= @holescore.hole.par %>" data-end="12">
-    <span class="slider-handle"  data-slider-handle role="slider" tabindex="1" aria-controls="holescore_gross_score"></span>
-    <span class="slider-fill" data-slider-fill></span>
-  </div>
-</div>
+<div class="row input-row">
   <%= form_for [@match, @holescore] do |f| %>
-    <div class="small-5 column">
+    <div class="small-5 columns">
       <%= f.submit "Enter Score", class: 'success button' %>
     </div>
-    <div class="small-3 column end">
+    <div class="small-3 columns end">
       <%= f.number_field :gross_score%>
     </div>
   <% end %>
 </div>
-
+  <div class="small-12 columns slider-row">
+    <div class="slider" data-slider data-start="1" data-initial-start="<%= @holescore.hole.par %>" data-end="12">
+      <span class="slider-handle"  data-slider-handle role="slider" tabindex="1" aria-controls="holescore_gross_score"></span>
+      <span class="slider-fill" data-slider-fill></span>
+    </div>
+  </div>
+<div class="row">
   <div class="expanded button-group">
     <% unless @previous_hole.nil? %>
-        <%= link_to '<< Hole', match_holescore_path(@match, @previous_hole), class: 'button' %>
+    <%= link_to '<< Hole', match_holescore_path(@match, @previous_hole), class: 'button' %>
     <% end %>
-      <%= link_to "Home", @match, class: 'button'  %>
+    <%= link_to "Home", @match, class: 'button'  %>
     <% unless @next_hole.nil? %>
-        <%= link_to 'Hole >>', match_holescore_path(@match, @next_hole), class: 'button'  %>
+    <%= link_to 'Hole >>', match_holescore_path(@match, @next_hole), class: 'button'  %>
     <% end# %>
   </div>
+</div>
