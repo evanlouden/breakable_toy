@@ -259,13 +259,19 @@
   text-align: center;
 }
 
-.score-slider {
-  margin-top: 10px;
-}
-
 .hole-header {
   padding: 10px;
   text-align: center;
   font-size: 1.25rem;
   font-weight: bold;
+}
+
+.input-row {
+  position: relative;
+  top: 15px;
+  height: 56px;
+}
+
+.slider-row {
+  height: 56px;
 }
