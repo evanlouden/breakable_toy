@@ -44,8 +44,8 @@ ActiveRecord::Schema.define(version: 20160512215019) do
     t.integer  "match_status",         default: 0,     null: false
     t.integer  "hero_id",                              null: false
     t.integer  "villain_id",                           null: false
-    t.integer  "hero_adj_handicap",                    null: false
-    t.integer  "villain_adj_handicap",                 null: false
+    t.integer  "hero_adj_handicap",    default: 0,     null: false
+    t.integer  "villain_adj_handicap", default: 0,     null: false
     t.integer  "course_id",                            null: false
     t.datetime "created_at"
     t.datetime "updated_at"

@@ -3,7 +3,7 @@ class MatchesController < ApplicationController
 
   def create
     @match = Match.new(match_params)
-    adjust_handicaps(@match)
+    @match.adjust_handicaps
     if @match.save
       flash[:notice] = "Match created. Play well."
     else
@@ -57,10 +57,10 @@ class MatchesController < ApplicationController
     @ghost_match = Match.where(course: @course).sample
     @ghost_user = User.find(1)
     @random_user = [@ghost_match.hero, @ghost_match.villain].sample
-    @ghost_user.handicap = @random_user.handicap
+    @ghost_user.update_attribute(:handicap, @random_user.handicap)
     @holescores = Holescore.where(user: @random_user, match: @ghost_match).order('hole_id')
     @match = Match.new(hero: current_user, villain: @ghost_user , course: @course)
-    adjust_handicaps(@match)
+    @match.adjust_handicaps
     @match.save
     @holescores.each do |holescore|
       hole = Holescore.new(user: @ghost_user, match: @match, hole_id: holescore.hole_id, gross_score: holescore.gross_score)
@@ -77,6 +77,7 @@ class MatchesController < ApplicationController
     @match.save
     redirect_to root_path
   end
+
   private
 
   def match_params
