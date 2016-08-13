@@ -15,10 +15,6 @@
 //= require foundation
 //= require_tree .
 
-// $(function(){ $(document).foundation(); });
-
-// HAMBURGLERv2
-
 function togglescroll() {
   $('body').on('touchmove', function(e) {
     if ($('body').hasClass('noscroll')) {
