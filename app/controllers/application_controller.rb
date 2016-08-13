@@ -12,19 +12,6 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:username, :email, :handicap, :password, :password_confirmation, :current_password) }
   end
 
-  def adjust_handicaps(match)
-    if match.hero.handicap < match.villain.handicap
-      match.hero_adj_handicap = 0
-      match.villain_adj_handicap = match.villain.handicap - match.hero.handicap
-    elsif match.hero.handicap > match.villain.handicap
-      match.villain_adj_handicap = 0
-      match.hero_adj_handicap = match.hero.handicap - match.villain.handicap
-    else
-      match.hero_adj_handicap = 0
-      match.villain_adj_handicap = 0
-    end
-  end
-
   def assign_strokes(holescore, user, match)
     if match.hero == user
       if match.hero_adj_handicap <= 18

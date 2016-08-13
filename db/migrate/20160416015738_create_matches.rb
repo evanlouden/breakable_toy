@@ -4,8 +4,8 @@ class CreateMatches < ActiveRecord::Migration
       t.integer :match_status, null: false, default: 0
       t.references :hero, index: true, null: false
       t.references :villain, index: true, null: false
-      t.integer :hero_adj_handicap, null: false 
-      t.integer :villain_adj_handicap, null: false
+      t.integer :hero_adj_handicap, null: false, default: 0
+      t.integer :villain_adj_handicap, null: false, default: 0
       t.belongs_to :course, null: false
 
       t.timestamps

@@ -3,12 +3,12 @@ require 'rails_helper'
 feature "create a ghost match" do
   scenario "a signed in user can create a ghost match" do
     # create first database user for ghosting
-    FactoryGirl.create(:user, username: 'Ghost')
-    user1 = FactoryGirl.create(:user)
-    user2 = FactoryGirl.create(:user)
+    FactoryGirl.create(:user, username: 'Ghost', handicap: 1)
+    user1 = FactoryGirl.create(:user, handicap: 3)
+    user2 = FactoryGirl.create(:user, handicap: 5)
     course = FactoryGirl.create(:course)
     hole = Hole.create(hole_number: 1, difficulty: 1, course: course, par: 4)
-    match = Match.create(hero: user1, villain: user2, hero_adj_handicap: 0, villain_adj_handicap: 5, course: course, match_completed: true)
+    match = Match.create(hero: user1, villain: user2, course: course, match_completed: true)
     Holescore.create(gross_score: 5, net_score: 5, user: user1, hole: hole, match: match)
     Holescore.create(gross_score: 5, net_score: 5, user: user2, hole: hole, match: match)
 
