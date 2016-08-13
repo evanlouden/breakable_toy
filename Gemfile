@@ -11,6 +11,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'devise'
 gem 'pg_search'
 gem 'httparty'
+gem "codeclimate-test-reporter", group: :test, require: nil
+
 
 group :development, :test do
   gem 'pry-rails'
@@ -34,7 +36,6 @@ end
 
 group :test do
   gem 'database_cleaner'
-  gem "codeclimate-test-reporter", group: :test, require: nil
 end
 
 gem 'rails_12factor', group: :production
