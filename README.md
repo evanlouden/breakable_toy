@@ -1,5 +1,5 @@
 ![Build Status](https://codeship.com/projects/93141260-e8b8-0133-1109-0a601490f276/status?branch=master)
-<!-- ![Code Climate](https://codeclimate.com/github/evanlouden/breakable_toy.png) -->
+[![Code Climate](https://codeclimate.com/github/evanlouden/breakable_toy/badges/gpa.svg)](https://codeclimate.com/github/evanlouden/breakable_toy)
 [![Coverage Status](https://coveralls.io/repos/github/evanlouden/breakable_toy/badge.svg?branch=master)](https://coveralls.io/github/evanlouden/breakable_toy?branch=master)
 
 Golf is a great game but in decline. Lots of people have their opinions on why:
@@ -30,4 +30,3 @@ Use the app here: http://golfmatchplay.herokuapp.com
 ** Note this app is really only functional for two users. For demo purposes you might ask a friend to help. **
 
 ** Also this app is styled exclusively for mobile. Use Chrome DevTools' Device Mode for a proper experience on desktop **
- 
