@@ -41,7 +41,7 @@ class MatchesController < ApplicationController
     if Holescore.where(match: @match, user: current_user).empty?
       @match.holes.count.times.each do |n|
         hole = Holescore.new(user: current_user, match: @match, hole_id: n + 1)
-        assign_strokes(hole, current_user, @match)
+        hole.assign_strokes(current_user, @match)
         hole.save
       end
     end
@@ -64,7 +64,7 @@ class MatchesController < ApplicationController
     @match.save
     @holescores.each do |holescore|
       hole = Holescore.new(user: @ghost_user, match: @match, hole_id: holescore.hole_id, gross_score: holescore.gross_score)
-      assign_strokes(hole, current_user, @match)
+      hole.assign_strokes(current_user, @match)
       calculate_net_score(hole)
       hole.save
     end

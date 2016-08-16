@@ -36,7 +36,7 @@ class CoursesController < ApplicationController
       @next_hole_number = 1
     else
       @next_hole_number = @holes.last.hole_number + 1
-    end 
+    end
     @hole = Hole.new
   end
 
