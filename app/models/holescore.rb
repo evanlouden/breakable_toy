@@ -10,7 +10,6 @@ class Holescore < ActiveRecord::Base
       if (hole.difficulty + 18) <= match.hero_adj_handicap
         self.strokes = 2
       else
-        binding.pry
         self.strokes = 1
       end
     end
