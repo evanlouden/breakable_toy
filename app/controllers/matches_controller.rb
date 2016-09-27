@@ -77,6 +77,7 @@ class MatchesController < ApplicationController
     @match = Match.find(params[:id])
     @match.match_completed = true
     @match.save
+    Holescore.where(match: @match, gross_score: nil).delete_all
     redirect_to root_path
   end
 

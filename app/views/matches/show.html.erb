@@ -23,7 +23,7 @@
       <%= link_to "#{holescore.hole.hole_number}", match_holescore_path(@match, holescore), class: "#{@button_class} hole button" %>
     </div>
   <% end %>
-  <% unless @match.match_completed == true %>
+  <% unless @match.match_completed %>
   <div class="small-12 large-8 centered-text">
       <%= link_to 'Finish Match', match_path(@match), class: "success button", method: :patch, data: {confirm: "Finish Match?"} %>
     </div>

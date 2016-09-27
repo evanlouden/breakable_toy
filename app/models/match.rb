@@ -18,14 +18,15 @@ class Match < ActiveRecord::Base
   end
 
   def calculate_match_status
+    self.match_status = 0
     holes.order('hole_number').each do |hole|
       hero_holescore = holescores.find_by(user: hero, hole: hole)
       villain_holescore = holescores.find_by(user: villain, hole: hole)
-      if hero_holescore.gross_score.nil? || villain_holescore.gross_score.nil?
-        break
-      else
-        self.match_status -= 1 if hero_holescore.net_score > villain_holescore.net_score
-        self.match_status += 1 if hero_holescore.net_score < villain_holescore.net_score
+      unless hero_holescore.nil? || villain_holescore.nil?
+        if hero_holescore.gross_score.present? && villain_holescore.gross_score.present?
+          self.match_status -= 1 if hero_holescore.net_score > villain_holescore.net_score
+          self.match_status += 1 if hero_holescore.net_score < villain_holescore.net_score
+        end
       end
     end
   end
