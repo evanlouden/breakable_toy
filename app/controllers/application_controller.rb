@@ -39,42 +39,21 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def match_started?(match, user)
-    holescores = Holescore.where(match: match)
-    if holescores.where.not(user: user).empty?
-      return false
-    else
-      return true
-    end
-  end
-
-  def calculate_match_status(match)
-    hero_holes = Holescore.where(match: match, user: match.hero).order('hole_id')
-    villain_holes = Holescore.where(match: match, user: match.villain).order('hole_id')
-    match.holes.count.times do |n|
-      if hero_holes[n].gross_score.nil? || villain_holes[n].gross_score.nil?
-        break
-      else
-        if hero_holes[n].net_score > villain_holes[n].net_score
-          match.match_status -= 1
-        elsif villain_holes[n].net_score > hero_holes[n].net_score
-          match.match_status += 1
-        end
-      end
-    end
-  end
-
-  def opponent_and_adjusted_handicaps(match)
-    if match.hero == current_user
-      @opponent = match.villain
-      @opponent_adjusted_handicap = match.villain_adj_handicap
-      @adjusted_handicap = match.hero_adj_handicap
-    else
-      @opponent = match.hero
-      @opponent_adjusted_handicap = match.hero_adj_handicap
-      @adjusted_handicap = match.villain_adj_handicap
-    end
-  end
+  # def calculate_match_status(match)
+  #   hero_holes = Holescore.where(match: match, user: match.hero).order('hole_id')
+  #   villain_holes = Holescore.where(match: match, user: match.villain).order('hole_id')
+  #   match.holes.count.times do |n|
+  #     if hero_holes[n].gross_score.nil? || villain_holes[n].gross_score.nil?
+  #       break
+  #     else
+  #       if hero_holes[n].net_score > villain_holes[n].net_score
+  #         match.match_status -= 1
+  #       elsif villain_holes[n].net_score > hero_holes[n].net_score
+  #         match.match_status += 1
+  #       end
+  #     end
+  #   end
+  # end
 
   def calculate_round_score(match)
     round_score = 0

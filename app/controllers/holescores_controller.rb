@@ -2,17 +2,13 @@ class HolescoresController < ApplicationController
   def show
     @pars = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
     @match = Match.find(params[:match_id])
-    @holescores = Holescore.where(user: current_user, match: @match).order('hole_id')
-    if match_started?(@match, current_user)
+    @opponent = (@match.hero == current_user ? @match.villain : @match.hero)
+    if @match.started?(current_user)
       @holescore = Holescore.find(params[:id])
-      @holescores = Holescore.where(match: @match, hole: @holescore.hole)
-      @holescores.each do |holescore|
-        unless holescore.user == current_user
-          @opponent_holescore = holescore
-        end
-      end
+      @opponent_holescore = Holescore.find_by(match: @match, user: @opponent, hole: @holescore.hole)
+      @holescore_start_value = (@holescore.gross_score.nil? ? @holescore.hole.par : @holescore.gross_score)
       @match_started = true
-      calculate_match_status(@match)
+      @match.calculate_match_status
       user_match_status(@match)
       @previous_hole = Holescore.find_by(match: @match, user: current_user, hole: @holescore.hole.hole_number - 1)
       @next_hole = Holescore.find_by(match: @match, user: current_user, hole: @holescore.hole.hole_number + 1)

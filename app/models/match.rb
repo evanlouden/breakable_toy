@@ -6,6 +6,7 @@ class Match < ActiveRecord::Base
   belongs_to :hero, class_name: "User"
   belongs_to :villain, class_name: "User"
 
+
   def adjust_handicaps
     if self.hero.handicap < self.villain.handicap
       self.hero_adj_handicap = 0
@@ -14,5 +15,28 @@ class Match < ActiveRecord::Base
       self.villain_adj_handicap = 0
       self.hero_adj_handicap = (self.hero.handicap - self.villain.handicap)
     end
+  end
+
+  def calculate_match_status
+    holes.order('hole_number').each do |hole|
+      hero_holescore = holescores.find_by(user: hero, hole: hole)
+      villain_holescore = holescores.find_by(user: villain, hole: hole)
+      if hero_holescore.gross_score.nil? || villain_holescore.gross_score.nil?
+        break
+      else
+        self.match_status -= 1 if hero_holescore.net_score > villain_holescore.net_score
+        self.match_status += 1 if hero_holescore.net_score < villain_holescore.net_score
+      end
+    end
+  end
+
+  def opponent_and_adjusted_handicaps(user)
+    @opponent = (hero == user ? villain : hero)
+    @opponent_adjusted_handicap = (hero == user ? villain_adj_handicap : hero_adj_handicap)
+    @adjusted_handicap = (hero == user ? hero_adj_handicap : villain_adj_handicap)
+  end
+
+  def started?(user)
+    holescores.where.not(user: user).any?
   end
 end
