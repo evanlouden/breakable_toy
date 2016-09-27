@@ -46,9 +46,11 @@ class MatchesController < ApplicationController
       end
     end
     @holescores = Holescore.where(user: current_user, match: @match).order('hole_id')
-    @match_started = match_started?(@match, current_user)
-    opponent_and_adjusted_handicaps(@match)
-    calculate_match_status(@match)
+    @match_started = @match.started?(current_user)
+    @opponent = (@match.hero == current_user ? @match.villain : @match.hero)
+    @opponent_adjusted_handicap = (@match.hero == current_user ? @match.villain_adj_handicap : @match.hero_adj_handicap)
+    @adjusted_handicap = (@match.hero == current_user ? @match.hero_adj_handicap : @match.villain_adj_handicap)
+    @match.calculate_match_status
     user_match_status(@match)
   end
 
