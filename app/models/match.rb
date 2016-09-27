@@ -24,8 +24,8 @@ class Match < ActiveRecord::Base
       villain_holescore = holescores.find_by(user: villain, hole: hole)
       unless hero_holescore.nil? || villain_holescore.nil?
         if hero_holescore.gross_score.present? && villain_holescore.gross_score.present?
-            self.match_status -= 1 if hero_holescore.net_score > villain_holescore.net_score
-            self.match_status += 1 if hero_holescore.net_score < villain_holescore.net_score
+          self.match_status -= 1 if hero_holescore.net_score > villain_holescore.net_score
+          self.match_status += 1 if hero_holescore.net_score < villain_holescore.net_score
         end
       end
     end
